@@ -4,10 +4,10 @@ export default function App() {
   return (
     <React.Fragment>
       <div>
-        <p>fooooooooo!?!?9test</p>
+        <p>fooooooooo!?!?9test hoge</p>
       </div>
       <div>
-        <p>kgjejijie</p>
+        <p>test</p>
       </div>
     </React.Fragment>
   );
