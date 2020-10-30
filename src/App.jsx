@@ -1,8 +1,10 @@
+
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Index from "./components/pages/Index";
 // import Home from "./components/pages/Home";
 // import About from "./components/pages/About";
+
 // import SignIn from "./components/pages/Signin";
 // import SignUp from "./components/pages/SignUp";
 
@@ -18,4 +20,6 @@ export default function App() {
 			</Switch>
 		</Router>
 	);
+
 }
+
