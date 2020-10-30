@@ -102,7 +102,7 @@ export default function Album() {
 								</Grid>
 								<Grid item>
 									<Button variant="outlined" color="primary">
-										Check other's
+										Check others
 									</Button>
 								</Grid>
 							</Grid>
