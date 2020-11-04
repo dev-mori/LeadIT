@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { Link, useHistory } from 'react-router-dom';
+
+
+import { auth } from "../../firebase"
+
 
 function Copyright() {
   return (
+
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
@@ -22,11 +27,14 @@ function Copyright() {
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
+
     </Typography>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
+
+
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -46,8 +54,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = () => {
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPssword] = useState('');
+  const [loading, setLoading] = useState(false)
+
   const classes = useStyles();
+  const history = useHistory();
+
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    setLoading(true)
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        response.user
+          .updateProfile({
+            displayName: username,
+          })
+          .then(() => {
+            setLoading(false)
+            history.push("/");
+          });
+      })
+      .catch((e) => {
+        setLoading(false)
+        console.log('登録失敗', e);
+      });
+  };
+
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,7 +99,9 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit}
+
+        >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -71,6 +113,10 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -82,6 +128,10 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -93,6 +143,10 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,6 +159,10 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={(e) => {
+                  setPssword(e.target.value);
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -120,12 +178,13 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={loading}
           >
             Sign Up
-          </Button>
+          </Button >
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/SignIn">
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -135,6 +194,7 @@ export default function SignUp() {
       <Box mt={5}>
         <Copyright />
       </Box>
-    </Container>
+    </Container >
   );
 }
+export default SignUp;
