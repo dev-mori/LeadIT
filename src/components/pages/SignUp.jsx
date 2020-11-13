@@ -11,15 +11,11 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link, useHistory } from 'react-router-dom';
-
-
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
-
 
 function Copyright() {
   return (
-
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
@@ -27,14 +23,11 @@ function Copyright() {
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
-
     </Typography>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
-
-
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -55,20 +48,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignUp = () => {
-
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPssword] = useState('');
-  const [loading, setLoading] = useState(false)
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPssword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const classes = useStyles();
   const history = useHistory();
 
-
   const handleSubmit = (e) => {
-
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
@@ -77,17 +67,15 @@ const SignUp = () => {
             displayName: username,
           })
           .then(() => {
-            setLoading(false)
+            setLoading(false);
             history.push("/");
           });
       })
       .catch((e) => {
-        setLoading(false)
-        console.log('登録失敗', e);
+        setLoading(false);
+        console.log("登録失敗", e);
       });
   };
-
-
 
   return (
     <Container component="main" maxWidth="xs">
@@ -99,9 +87,7 @@ const SignUp = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={handleSubmit}
-
-        >
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -181,12 +167,10 @@ const SignUp = () => {
             disabled={loading}
           >
             Sign Up
-          </Button >
+          </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/SignIn">
-                Already have an account? Sign in
-              </Link>
+              <Link to="/SignIn">Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </form>
@@ -194,7 +178,7 @@ const SignUp = () => {
       <Box mt={5}>
         <Copyright />
       </Box>
-    </Container >
+    </Container>
   );
-}
+};
 export default SignUp;

@@ -1,6 +1,11 @@
 import React from "react";
-import MiniForm from "../pages/templates/MiniForm"
+import MiniDots from "../templates/MiniDots";
 
 export default function Index() {
-  return <div>Index </div>;
+  return (
+    <React.Fragment>
+      <div>Index</div>
+      <MiniDots />
+    </React.Fragment>
+  );
 }
