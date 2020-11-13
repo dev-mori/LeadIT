@@ -16,7 +16,7 @@ const Dots = ({ dot }) => {
   const classes = useStyles();
   return (
     <div>
-      <Link style={{ display: "flex" }} to={`/dot/${dot.documentId}`}>
+      <Link style={{ display: "flex" }} to={`/dot/${dot.id}`}>
         <ListItemText
           className={classes.list}
           primary={dot.title}

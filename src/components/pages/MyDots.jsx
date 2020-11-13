@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import firebase from "../../firebase/firebase";
 import List from "@material-ui/core/List";
-import Dots from "./Dots";
+import Dots from "../templates/Dots";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +52,14 @@ export default function MiniDots() {
           })}
         </List>
       </div>
+      <div className={classes.root}>
+        <List component="nav">
+          {dots.map((dot) => {
+            return <Dots dot={dot} />;
+          })}
+        </List>
+      </div>
+      
     </>
   );
 }
