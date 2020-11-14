@@ -42,13 +42,12 @@ export default function MiniDots() {
         );
       });
   }, []);
-  console.log(dots);
   return (
     <>
       <div className={classes.root}>
         <List component="nav">
           {dots.map((dot) => {
-            return <Dots dot={dot} />;
+            return <Dots dot={dot} key={dot.dotId} />;
           })}
         </List>
       </div>
