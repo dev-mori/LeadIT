@@ -7,15 +7,15 @@ import MiniForm from "../templates/MiniForm";
 import UserIcon from "../templates/icons/user/user";
 
 export default function Base() {
-  return (
-    <React.Fragment>
-      <Header />
-      <UserIcon />
-      <div>Index</div>
-      <MiniForm />
-      <MiniDots />
-      <BarChart />
-      <Footer />
-    </React.Fragment>
-  );
+        return (
+                <React.Fragment>
+                        <Header />
+                        <UserIcon />
+                        <div>Index</div>
+                        <MiniForm />
+                        <MiniDots />
+                        <BarChart />
+                        <Footer />
+                </React.Fragment>
+        );
 }
