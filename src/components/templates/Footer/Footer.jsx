@@ -1,6 +1,6 @@
 import React from "react";
 import { FooterParent, FooterWrapper } from "./FooterElements";
-import Icon from "../icons/";
+import Icon from "../icons/index";
 
 const Footer = () => {
   return (
