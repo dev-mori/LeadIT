@@ -10,11 +10,11 @@ export default function Base() {
   return (
     <React.Fragment>
       <Header />
-      <UserIcon />
       <div>Index</div>
       <MiniForm />
       <MiniDots />
       <BarChart />
+      <UserIcon />
       <Footer />
     </React.Fragment>
   );
