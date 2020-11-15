@@ -7,6 +7,7 @@ import SignIn from "./components/pages/SignIn";
 import SignUp from "./components/pages/SignUp";
 import MyDots from "./components/pages/MyDots";
 import DotDetail from "./components/pages/DotDetail";
+
 // import Form from "./components/pages/Form";
 
 export default function App() {
@@ -25,3 +26,4 @@ export default function App() {
     </Router>
   );
 }
+      
