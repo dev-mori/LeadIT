@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
+import { render } from "react-dom";
 import AvatarEditor from "react-avatar-editor";
 import Avatar from "material-ui/Avatar";
 import RaisedButton from "material-ui/RaisedButton";
@@ -14,13 +15,10 @@ class UserIcon extends React.Component {
     this.handleFileChange = this.handleFileChange.bind(this);
     this.setEditorRef = this.setEditorRef.bind(this);
     this.handleZoomSlider = this.handleZoomSlider.bind(this);
-    this.rotateLeft = this.rotateLeft.bind(this);
-    this.rotateRight = this.rotateRight.bind(this);
     this.state = {
       cropperOpen: false,
       img: null,
       zoom: 2,
-      rotate: 0,
       croppedImg:
         "https://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png",
     };
@@ -48,7 +46,6 @@ class UserIcon extends React.Component {
       state.img = null;
       state.cropperOpen = false;
       state.croppedImg = croppedImg;
-      state.rotate = 0;
       this.setState(state);
     }
   }
@@ -61,28 +58,12 @@ class UserIcon extends React.Component {
     this.editor = editor;
   }
 
-  rotateLeft() {
-    this.setState({
-      rotate: this.state.rotate - 90,
-    });
-  }
-
-  rotateRight() {
-    this.setState({
-      rotate: this.state.rotate + 90,
-    });
-  }
-
   render() {
     return (
       <MuiThemeProvider>
-        <div style={{ height: 50 }}>
-          <Avatar src={this.state.croppedImg} size={50} />
-          <RaisedButton
-            label="Image"
-            labelPosition="bottom"
-            containerElement="label"
-          >
+        <div style={{ height: 500 }}>
+          <Avatar src={this.state.croppedImg} size={100} />
+          <RaisedButton labelPosition="before" containerElement="label">
             <input
               ref="in"
               type="file"
@@ -92,7 +73,7 @@ class UserIcon extends React.Component {
           </RaisedButton>
           {this.state.cropperOpen && (
             <div
-              className="cropper-wrUserIconer"
+              className="cropper-wrapper"
               style={{
                 position: "absolute",
                 top: 0,
@@ -108,9 +89,9 @@ class UserIcon extends React.Component {
               <AvatarEditor
                 ref={this.setEditorRef}
                 image={this.state.img}
-                width={100}
-                height={100}
-                border={30}
+                width={200}
+                height={200}
+                border={50}
                 color={[255, 255, 255, 0.6]} // RGBA
                 rotate={this.state.rotate}
                 scale={this.state.zoom}
@@ -138,7 +119,7 @@ class UserIcon extends React.Component {
                   step={0.1}
                   value={this.state.zoom}
                   onChange={this.handleZoomSlider}
-                  style={{ width: 100 }}
+                  style={{ width: 200 }}
                 />
               </div>
               <div
@@ -147,20 +128,7 @@ class UserIcon extends React.Component {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-              >
-                <label
-                  style={{
-                    fontSize: 12,
-                    marginRight: 10,
-                    paddingBottom: 22,
-                    fontWeight: 600,
-                  }}
-                >
-                  Rotate
-                </label>
-                <button onClick={this.rotateLeft}>Left</button>
-                <button onClick={this.rotateRight}>Right</button>
-              </div>
+              ></div>
               <div>
                 <RaisedButton
                   label="CANCEL"
