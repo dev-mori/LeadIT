@@ -38,12 +38,13 @@ const Select = React.forwardRef(({ label }, ref) => (
 ));
 
 export default function App() {
-        const { register, handleSubmit } = useForm();
+        const { register, handleSubmit, errors} = useForm();
         const onSubmit = data => console.log(data);
 
         return (
                 <form onSubmit={handleSubmit(onSubmit)}>
-                        <Input label="Title" register={register} required />
+                        <Input label="Title" name="title" register={register({ required: true })} required />
+                        {errors.Name && " Titlename is required"}
                         <Select label="working" ref={register} />
                         <input type="submit" value="Send" />
                 </form>
