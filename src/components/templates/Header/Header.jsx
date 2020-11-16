@@ -16,7 +16,9 @@ const Header = () => {
         <NavBtn>
           <NavBtnLink to="/signin">Sign In</NavBtnLink>
         </NavBtn>
-        <Icon>{/* <UserIcon /> */}</Icon>
+        <Icon>
+          <UserIcon />
+        </Icon>
       </Nav>
     </>
   );
