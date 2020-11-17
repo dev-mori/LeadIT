@@ -3,7 +3,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import shortid from "shortid";
-
 import firebase from "../../firebase/firebase";
 import { fetchDots } from "../../redux/dots/actions";
 
@@ -61,5 +60,6 @@ const MiniForm = (props) => {
 		</form>
 	);
 };
+
 
 export default connect(null, { fetchDots })(MiniForm);

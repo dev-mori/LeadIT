@@ -24,24 +24,10 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const NavMenu = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: -24px;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 24px;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const NavBtnLink = styled(Link)`
@@ -60,4 +46,8 @@ export const NavBtnLink = styled(Link)`
     background: #fff;
     color: #010606;
   }
+`;
+
+export const Icon = styled.i`
+  padding: 10px 22px;
 `;
