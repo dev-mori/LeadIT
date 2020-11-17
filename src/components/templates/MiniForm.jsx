@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../../firebase/firebase";
 import shortid from "shortid";
-
-
-
+import { AuthContext } from "../../firebase/AuthService";
 const Select = React.forwardRef(({ label }, ref) => (
-
   <>
     <label>{label}</label>
-    <select name={label} ref={ref} >
-      <option value='0.5'>0.5</option>
+    <select name={label} ref={ref}>
+      <option value="0.5">0.5</option>
       <option value="1.0">1.0</option>
       <option value="1.5">1.5</option>
       <option value="2.0">2.0</option>
@@ -35,6 +32,7 @@ const Select = React.forwardRef(({ label }, ref) => (
 
 export default function App() {
   const { register, handleSubmit } = useForm();
+  const user = useContext(AuthContext);
   const onSubmit = (data) => {
     const working = parseFloat(data.working);
     const dotId = shortid.generate();
@@ -45,7 +43,7 @@ export default function App() {
       url: "",
       working: working,
       tag: "",
-      userId: "",
+      userId: user.uid,
       createdAt: new Date(),
     });
   };
