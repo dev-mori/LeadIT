@@ -1,0 +1,485 @@
+[33mcommit ee05ccad601de08eb0da3a64d12d18cf82bd0867[m[33m ([m[1;36mHEAD -> [m[1;32mfeature#55[m[33m, [m[1;32mfeature#100[m[33m, [m[1;32mdevelop[m[33m)[m
+Merge: 09a2e7f eaa8e12
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Sun Nov 15 11:48:23 2020 +0900
+
+    Merge pull request #51 from 39-project-A/feature#38
+    
+    Header/footerの実装 #38
+
+[33mcommit eaa8e1288dfb44a8812c67bd6d36020ec4bfeb5f[m[33m ([m[1;31morigin/feature#38[m[33m)[m
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Sat Nov 14 21:46:20 2020 +0900
+
+    Header/footerの実装 #38
+
+[33mcommit 6c387b39a4627346cdca4c9469819bcbbcedeeaf[m
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Sat Nov 14 21:42:32 2020 +0900
+
+    Header/footerの実装 #38
+
+[33mcommit 09a2e7f433565ac76db48240a236d41c5a9e6cad[m
+Merge: a963814 f465d12
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Sat Nov 14 15:15:06 2020 +0900
+
+    Merge pull request #50 from 39-project-A/feature#49
+    
+    file構成&route修正 #49
+
+[33mcommit f465d1203582c466f9b0aeb5f5c770142d3f0323[m[33m ([m[1;31morigin/feature#49[m[33m)[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Sat Nov 14 15:14:09 2020 +0900
+
+    file構成&route修正 #49
+
+[33mcommit a963814cae221cfb43c1820253f5c4c61b549c3f[m
+Merge: 48b0f28 ef2340e
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Nov 13 16:15:35 2020 +0900
+
+    Merge pull request #47 from 39-project-A/feature#34
+    
+    redux導入 #34
+
+[33mcommit ef2340eb3f8fa6a278248042ad89262086425656[m[33m ([m[1;31morigin/feature#34[m[33m)[m
+Merge: 0f3fc2a 48b0f28
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Nov 13 16:15:29 2020 +0900
+
+    Merge branch 'develop' into feature#34
+
+[33mcommit 48b0f283d629df29d85aa16175a52aef17019302[m
+Merge: 43773ae 102b238
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Nov 13 16:13:13 2020 +0900
+
+    Merge pull request #48 from 39-project-A/feature#42
+    
+    MyDotsの作成 #42
+
+[33mcommit 102b238f9d3ee9c6cd319fd04ac40f21061ed804[m[33m ([m[1;31morigin/feature#42[m[33m)[m
+Merge: 53b6667 43773ae
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Nov 13 16:12:45 2020 +0900
+
+    fix
+
+[33mcommit 53b66676976ed450682ca26609b093a2ea080bf4[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Nov 13 15:49:40 2020 +0900
+
+    MyDotsの作成 #42
+
+[33mcommit 0f3fc2a95742130af2aad377eeac8c4d786a4ffd[m
+Author: kanako-110 <kanako.110.ito@gmail.com>
+Date:   Fri Nov 13 00:31:38 2020 +0900
+
+    redux導入 #34
+
+[33mcommit 43773ae6f62076739f113a80c6f97f7420c57d3e[m
+Merge: a0aaf69 6bc8049
+Author: yuusaku araki <one25Yellow@icloud.com>
+Date:   Thu Nov 12 23:32:12 2020 +0900
+
+    Merge pull request #45 from 39-project-A/feature#39
+    
+    feature#39
+
+[33mcommit 6bc80493d1e94815d39a1f9e1e9566288dac3947[m[33m ([m[1;31morigin/feature#39[m[33m)[m
+Author: yuusaku125521 <one25Yellow@icloud.com>
+Date:   Thu Nov 12 23:22:51 2020 +0900
+
+    feature#39
+
+[33mcommit a0aaf69512e2a9adba60ee5f90f0c0ed779a15f7[m
+Merge: 66d2324 605a649
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Sun Nov 8 11:17:55 2020 +0900
+
+    Merge pull request #43 from 39-project-A/feature#40
+    
+    MiniDotsの作成 #40
+
+[33mcommit 605a6499b2b4d02440350f4bf959a7ced9aa0cb8[m[33m ([m[1;31morigin/feature#40[m[33m)[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Sun Nov 8 11:15:48 2020 +0900
+
+    MiniDotsの作成 #40
+
+[33mcommit 66d23244e80b036c0ffa3fcf0ba7310909550b2e[m
+Merge: 07fd06d 2c8e4b1
+Author: yuusaku araki <one25Yellow@icloud.com>
+Date:   Thu Nov 5 00:33:02 2020 +0900
+
+    Merge pull request #41 from 39-project-A/feature#35
+    
+    Feature#35
+
+[33mcommit 2c8e4b126dd7264445fec72a3372474d3b34a4e8[m[33m ([m[1;31morigin/feature#35[m[33m)[m
+Author: yuusaku125521 <one25Yellow@icloud.com>
+Date:   Thu Nov 5 00:30:45 2020 +0900
+
+    feature#35
+
+[33mcommit 14e3f499e0498d49fca06dc98725f917ac198433[m
+Author: yuusaku125521 <one25Yellow@icloud.com>
+Date:   Thu Nov 5 00:20:36 2020 +0900
+
+    feature#35
+
+[33mcommit 07fd06da66d53456ec795fff6b6748c685aa594d[m
+Merge: bf09c8d f26a356
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Sat Oct 31 18:46:13 2020 +0900
+
+    Merge pull request #33 from 39-project-A/feature#25
+    
+    About の作成 #25
+
+[33mcommit f26a356171bf4208293482d2a6200ae1500b54af[m[33m ([m[1;31morigin/feature#25[m[33m)[m
+Author: kanako-110 <kanako.110.ito@gmail.com>
+Date:   Sat Oct 31 16:36:58 2020 +0900
+
+    About の作成 #25
+
+[33mcommit bf09c8d7ac70eeb3f6d640e98b42f121b801002f[m
+Merge: b6f88f8 562123b
+Author: yuusaku araki <one25Yellow@icloud.com>
+Date:   Sat Oct 31 00:36:56 2020 +0900
+
+    Merge pull request #31 from 39-project-A/feature#21
+    
+    Feature#21
+
+[33mcommit 562123b5c1ecb82fb1c98f49108e8549ebe561c8[m[33m ([m[1;31morigin/feature#21[m[33m)[m
+Merge: 66d2a26 b6f88f8
+Author: yuusaku araki <one25Yellow@icloud.com>
+Date:   Sat Oct 31 00:35:59 2020 +0900
+
+    Merge branch 'develop' into feature#21
+
+[33mcommit b6f88f8312ccaf39d85028fcbb4ee14acaec9f57[m
+Merge: 69e6e24 34b386e
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 23:48:26 2020 +0900
+
+    Merge pull request #32 from 39-project-A/feture#24
+    
+    Feture#24
+
+[33mcommit 34b386ed8468761dc462b2503a54e5b165cb9f4f[m[33m ([m[1;31morigin/feture#24[m[33m)[m
+Author: kanako-110 <kanako.110.ito@gmail.com>
+Date:   Fri Oct 30 23:35:02 2020 +0900
+
+    Homeの作成 #24
+
+[33mcommit 66d2a26d42a5dae97d5a1d6adfa3ede32ba52833[m
+Author: yuusaku125521 <one25Yellow@icloud.com>
+Date:   Fri Oct 30 23:34:26 2020 +0900
+
+    loginの作成 #21
+
+[33mcommit 46e7f99907dc103fb9ebc9996f953f1acb700af3[m
+Author: kanako-110 <kanako.110.ito@gmail.com>
+Date:   Fri Oct 30 23:11:16 2020 +0900
+
+    Homeの作成 #24
+
+[33mcommit 69e6e24c416410a3be73b8eb32d5903e2c1487e0[m
+Merge: 53c846d fe23533
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 15:13:44 2020 +0900
+
+    Merge pull request #30 from 39-project-A/feature#27
+    
+    firebaseのセッティング #27
+
+[33mcommit fe23533aafb64ac8e608f909193dbe61722cebc6[m[33m ([m[1;31morigin/feature#27[m[33m)[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 15:11:54 2020 +0900
+
+    firebaseのセッティング #27
+
+[33mcommit 53c846da4ae2638388fbfeeb3ad7253e756a15ab[m
+Merge: 7f0a607 4312fde
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 13:52:27 2020 +0900
+
+    Merge pull request #29 from 39-project-A/feature#23
+    
+    Signupページの追加 #23
+
+[33mcommit 4312fde9422bbacb3b9405817c2f088d6b7cfb1c[m[33m ([m[1;31morigin/feature#23[m[33m)[m
+Merge: 343c2fe 7f0a607
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 13:52:21 2020 +0900
+
+    Merge branch 'develop' into feature#23
+
+[33mcommit 343c2fe128584098a5eab5f08fc6b116e978a036[m
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Fri Oct 30 12:44:41 2020 +0900
+
+    Signupページの追加 #23
+
+[33mcommit 7f0a60705cd8ba3906036afce6bbe1f207add912[m
+Merge: 6d7b0b8 dd8b3f1
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 12:38:59 2020 +0900
+
+    Merge pull request #28 from 39-project-A/feature#26
+    
+    ルーティングの設定 #26
+
+[33mcommit dd8b3f124692f3da6f40755c400e5a5b46927bf9[m[33m ([m[1;31morigin/feature#26[m[33m)[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 30 12:36:52 2020 +0900
+
+    ルーティングの設定 #26
+
+[33mcommit 70faec98921d44c8c3446e1d988dc8fc8e7a6437[m[33m ([m[1;31morigin/araki[m[33m)[m
+Author: yuusaku125521 <one25Yellow@icloud.com>
+Date:   Fri Oct 30 00:53:23 2020 +0900
+
+    araki
+
+[33mcommit 9b009d1e3ca352123d8ac8a2fa98914b91683c8d[m
+Author: yuusaku125521 <one25Yellow@icloud.com>
+Date:   Fri Oct 30 00:33:14 2020 +0900
+
+    ログイン機能の追加
+
+[33mcommit 6d7b0b8006616f7d7e1166ab960bbd744cebdced[m
+Merge: 7fa8aba 5e20f3d
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 23:10:14 2020 +0900
+
+    Merge pull request #22 from 39-project-A/feature#20
+    
+    Feature#20
+
+[33mcommit 5e20f3d5bb1b8da18b48d96725a18936da98e607[m[33m ([m[1;31morigin/feature#20[m[33m)[m
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Thu Oct 29 23:05:45 2020 +0900
+
+    変更１
+
+[33mcommit 2e5d1aa2c171cad2f91eb897d9da67c4b7be92d8[m
+Merge: a9960bf 7fa8aba
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Thu Oct 29 22:59:26 2020 +0900
+
+    Merge branch 'develop' of https://github.com/39-project-A/LeadIT into develop
+
+[33mcommit 7fa8aba8e0f13d3d3a853aa4cdc7f70ccd02d989[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 22:54:58 2020 +0900
+
+    update
+
+[33mcommit a9960bfbd6b5664266668dd12485dec3abac066f[m[33m ([m[1;31morigin/feature#3[m[33m)[m
+Merge: 1b5f509 182aaf4
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 21:21:59 2020 +0900
+
+    Merge pull request #19 from 39-project-A/feature#18
+    
+    update
+
+[33mcommit 182aaf482e2b6ac989484953d100af3afd034d90[m[33m ([m[1;31morigin/feature#18[m[33m)[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 21:20:06 2020 +0900
+
+    update
+
+[33mcommit 1b5f509aea7fdbe4c7f03c59aad482c918b06357[m
+Merge: 706516f 0503c7d
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:56:06 2020 +0900
+
+    Merge pull request #17 from 39-project-A/feature#16
+    
+    test issue #16
+
+[33mcommit 0503c7d822f13884d8f2c05befd8f9324e0df080[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:54:40 2020 +0900
+
+    test issue #16
+
+[33mcommit 706516f003569ae03d5cd585994c5d8ed65b5047[m
+Merge: 8d2d5d5 5e06646
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:09:51 2020 +0900
+
+    Merge pull request #15 from 39-project-A/gitconfig
+    
+    Gitconfig
+
+[33mcommit 5e066466e60da40672a05dc363994ac5c00d9f0f[m
+Merge: 7ac8367 8d2d5d5
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:09:44 2020 +0900
+
+    Merge branch 'develop' into gitconfig
+
+[33mcommit 7ac83678f159f6c2a03bb233685e9084e7b1294c[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:06:21 2020 +0900
+
+    gitconfig
+
+[33mcommit 8d2d5d5d6699c5369c0c0b841b0bd5f23be92814[m
+Merge: 7111460 5224102
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:00:43 2020 +0900
+
+    Merge pull request #14 from 39-project-A/test
+    
+    Test
+
+[33mcommit 522410253853b83000c361a09d72921e5137a2f7[m
+Merge: b1c2479 7111460
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 14:00:36 2020 +0900
+
+    Merge branch 'develop' into test
+
+[33mcommit b1c24798d5bd5ddfd631558e655af35374f5d5f0[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 13:59:12 2020 +0900
+
+    test
+
+[33mcommit 0f804da8fd4874a693500fa1d4d39e48352392e4[m
+Merge: da1a17e 7111460
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 13:55:42 2020 +0900
+
+    Merge branch 'develop' of https://github.com/39-project-A/LeadIT into develop
+
+[33mcommit da1a17e80044ca4165daf3090bd556019f646ed5[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Thu Oct 29 13:53:27 2020 +0900
+
+    update
+
+[33mcommit 711146089b3debdb9588ddc113e5854add00ffc0[m
+Merge: 6f7967f 27f76c0
+Author: yuusaku araki <70525028+yuusaku125521@users.noreply.github.com>
+Date:   Sun Oct 25 15:48:13 2020 +0900
+
+    Merge pull request #13 from 39-project-A/arakisan
+    
+    arakisan #12
+
+[33mcommit 27f76c0f62863db20646410ef73c614fdf528cc8[m
+Author: GitHubのユーザー名 <メールアドレス>
+Date:   Sun Oct 25 15:40:23 2020 +0900
+
+    arakisan #12
+
+[33mcommit 45e3a06ac887a15cfa537cfb04f691b267b5e554[m
+Author: GitHubのユーザー名 <メールアドレス>
+Date:   Sun Oct 25 15:27:48 2020 +0900
+
+    arakisan #12
+
+[33mcommit 6f7967f223b41fa9aade6eef0165046f889ddf92[m
+Merge: 86852be c5fef30
+Author: masato <69741652+iwamasa-code@users.noreply.github.com>
+Date:   Sat Oct 24 01:08:37 2020 +0900
+
+    Merge pull request #11 from 39-project-A/masa
+    
+    9を加えました
+
+[33mcommit c5fef305951901b53876136f238d28723c4d8b17[m
+Author: masa <iwamasa.0526.to@gmail.com>
+Date:   Sat Oct 24 01:07:05 2020 +0900
+
+    9を加えました
+
+[33mcommit 86852be72d839e8a811c1bcc2b08b549a3923a02[m
+Merge: 8d41005 4903425
+Author: bloodydark <70703676+bloodydark@users.noreply.github.com>
+Date:   Sat Oct 24 00:42:45 2020 +0900
+
+    Merge pull request #10 from 39-project-A/feature#3
+    
+    test #3
+
+[33mcommit 4903425cedd5ecf297d46d29e13560f7d724addc[m
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Sat Oct 24 00:37:41 2020 +0900
+
+    test
+
+[33mcommit 8d41005cac523a535f90c52fe9e4bb13d1d85db2[m
+Merge: 0abd11c dc693e2
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Sat Oct 24 00:31:57 2020 +0900
+
+    Merge pull request #9 from 39-project-A/feature#8
+    
+    hoge #8
+
+[33mcommit dc693e2e761c9aae316ad2cf1d564fc9c9f0e16a[m
+Author: deve.hoge@gmail.com <61268214+dev-mori@users.noreply.github.com>
+Date:   Sat Oct 24 00:29:55 2020 +0900
+
+    hoge #8
+
+[33mcommit 0abd11c225d6f5985121e7b0bb26c4f93bd54d5f[m
+Merge: 7e6482e 46623a4
+Author: kanako-110 <70254497+kanako-110@users.noreply.github.com>
+Date:   Sat Oct 24 00:20:35 2020 +0900
+
+    Merge pull request #7 from 39-project-A/feature#4
+    
+    itosan #4
+
+[33mcommit 46623a44037450294c8bf945bdec231f21f1f89f[m[33m ([m[1;31morigin/feature#4[m[33m)[m
+Author: kanako-110 <kanako.110.ito@gmail.com>
+Date:   Sat Oct 24 00:17:21 2020 +0900
+
+    commit by ito
+
+[33mcommit 7e6482ee0f9725e99b04df0a8ed2665a94c4dc68[m
+Merge: 0d23e5f e7b151a
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 23 23:49:46 2020 +0900
+
+    Merge pull request #6 from 39-project-A/feature#5
+    
+    iwasawasan #5
+
+[33mcommit e7b151ac25aef08894c7bafed3d6b257a5735c3b[m
+Merge: 3d544bb 0d23e5f
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 23 23:49:22 2020 +0900
+
+    Merge branch 'develop' into feature#5
+
+[33mcommit 3d544bbaeaa83e8ca96c08a3927f7f8ac57ccaf4[m
+Author: masa <iwamasa.0526.to@gmail.com>
+Date:   Fri Oct 23 23:45:15 2020 +0900
+
+    変更しました
+
+[33mcommit 0d23e5fc2dd6f1f789ef2ba01157f8191db1fd75[m
+Author: bloodydark <justiceremain48694802@gmail.com>
+Date:   Fri Oct 23 23:21:36 2020 +0900
+
+    first
+
+[33mcommit f267b1089c86a24c69fef7173814e42423e28abb[m
+Merge: 7818012 0229af0
+Author: dev-mori <61268214+dev-mori@users.noreply.github.com>
+Date:   Fri Oct 23 22:33:53 2020 +0900
+
+    Merge pull request #2 from 39-project-A/master
+    
+    Master
