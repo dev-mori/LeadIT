@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../../firebase/firebase";
+import { auth } from "./firebase";
 
 const AuthContext = React.createContext();
 
@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
       setUser(user);
     });
   }, []);
+  console.log(user);
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };

@@ -1,8 +1,9 @@
+import React, { useContext } from "react";
 import { PinDropSharp } from "@material-ui/icons";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import shortid from "shortid";
+import { AuthContext } from "../../firebase/AuthService";
 import firebase from "../../firebase/firebase";
 import { fetchDots } from "../../redux/dots/actions";
 
@@ -35,8 +36,10 @@ const Select = React.forwardRef(({ label }, ref) => (
 
 const MiniForm = (props) => {
 	const { register, handleSubmit } = useForm();
+  const user = useContext(AuthContext);
 	const onSubmit = (data) => {
 		// 消す👉firebaseにtext等を送るよう設定。データ保蔵
+    const working = parseFloat(data.working);
 		const dotId = shortid.generate();
 		firebase.firestore().collection("dots").doc(dotId).set({
 			dotId: dotId,
@@ -45,7 +48,7 @@ const MiniForm = (props) => {
 			url: "",
 			working: data.working,
 			tag: "",
-			userId: "",
+      userId: user.uid,
 			createdAt: new Date(),
 		});
 		props.fetchDots();
@@ -60,6 +63,5 @@ const MiniForm = (props) => {
 		</form>
 	);
 };
-
 
 export default connect(null, { fetchDots })(MiniForm);
