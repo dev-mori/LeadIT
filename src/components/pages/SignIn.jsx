@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +11,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
+import { AuthContext } from "../../firebase/AuthService";
+import { Route, Redirect } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -51,7 +53,10 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const classes = useStyles();
   const history = useHistory();
-
+  const user = useContext(AuthContext);
+  if (user) {
+    return <Redirect to="/" />;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
