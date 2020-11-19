@@ -34,30 +34,30 @@ const Select = React.forwardRef(({ label }, ref) => (
 ));
 
 export default function MiniForm() {
-	const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
 
+  const onSubmit = (data) => {
+    const dotId = shortid.generate();
+    firebase.firestore().collection("dots").doc(dotId).set({
+      dotId: dotId,
+      title: data.title,
+      text: "",
+      url: "",
+      working: data.working,
+      tag: "",
+      userId: "",
+      createdAt: new Date(),
+    });
+    dispatch(add_dot(data));
+  };
 
-	const onSubmit = (data) => {
-		const dotId = shortid.generate();
-		firebase.firestore().collection("dots").doc(dotId).set({
-			dotId: dotId,
-			title: data.title,
-			text: "",
-			url: "",
-			working: data.working,
-			tag: "",
-			userId: "",
-			createdAt: new Date(),
-		});
-		dispatch(add_dot(data));
-	};
-
-	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<label>Title</label>
-			<input name="title" ref={register({ required: true })} />
-			<Select label="working" ref={register({ required: true })} />
-			<input type="submit" value="Send" />
-		</form>
-	);
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label>Title</label>
+      <input name="title" ref={register({ required: true })} />
+      <Select label="working" ref={register({ required: true })} />
+      <input type="submit" value="Send" />
+    </form>
+  );
 }
