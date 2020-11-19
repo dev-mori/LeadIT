@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import shortid from "shortid";
 import { AuthContext } from "../../firebase/AuthService";
 import firebase from "../../firebase/firebase";
+import { add_dot } from "../../reducks/dots/action";
 
 const Select = React.forwardRef(({ label }, ref) => (
   <>
@@ -32,29 +34,30 @@ const Select = React.forwardRef(({ label }, ref) => (
 ));
 
 export default function MiniForm() {
-  const { register, handleSubmit } = useForm();
-  const user = useContext(AuthContext);
-  const onSubmit = (data) => {
-    const working = parseFloat(data.working);
-    const dotId = shortid.generate();
-    firebase.firestore().collection("dots").doc(dotId).set({
-      dotId: dotId,
-      title: data.title,
-      text: "",
-      url: "",
-      working: data.working,
-      tag: "",
-      userId: user.uid,
-      createdAt: new Date(),
-    });
-  };
+	const { register, handleSubmit } = useForm();
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Title</label>
-      <input name="title" ref={register({ required: true })} />
-      <Select label="working" ref={register({ required: true })} />
-      <input type="submit" value="Send" />
-    </form>
-  );
+
+	const onSubmit = (data) => {
+		const dotId = shortid.generate();
+		firebase.firestore().collection("dots").doc(dotId).set({
+			dotId: dotId,
+			title: data.title,
+			text: "",
+			url: "",
+			working: data.working,
+			tag: "",
+			userId: "",
+			createdAt: new Date(),
+		});
+		dispatch(add_dot(data));
+	};
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<label>Title</label>
+			<input name="title" ref={register({ required: true })} />
+			<Select label="working" ref={register({ required: true })} />
+			<input type="submit" value="Send" />
+		</form>
+	);
 }

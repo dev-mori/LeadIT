@@ -865,6 +865,16 @@
     resolve "^1.8.1"
     semver "^5.5.1"
 
+"@babel/plugin-transform-runtime@^7.11.0":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.12.1.tgz#04b792057eb460389ff6a4198e377614ea1e7ba5"
+  integrity sha512-Ac/H6G9FEIkS2tXsZjL4RAdS3L3WHxci0usAnz7laPWUmFiGtj7tIASChqKZMHTSQTQY6xDbOq+V1/vIq3QrWg==
+  dependencies:
+    "@babel/helper-module-imports" "^7.12.1"
+    "@babel/helper-plugin-utils" "^7.10.4"
+    resolve "^1.8.1"
+    semver "^5.5.1"
+
 "@babel/plugin-transform-shorthand-properties@^7.12.1", "@babel/plugin-transform-shorthand-properties@^7.8.3":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.12.1.tgz#0bf9cac5550fce0cfdf043420f661d645fdc75e3"
@@ -1130,7 +1140,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.2.0":
+"@babel/runtime@^7.11.2", "@babel/runtime@^7.2.0":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
@@ -9554,7 +9564,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9748,6 +9758,15 @@ react-avatar-edit@^0.9.0:
     exif-js "^2.3.0"
     konva "^2.5.1"
 
+react-avatar-editor@^11.0.12:
+  version "11.0.12"
+  resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-11.0.12.tgz#6a9d03c6808c76f34b495284451ca268d344ed70"
+  integrity sha512-YUPDQUKaKj7noYZvTnQltU5zP8qUqeBroggQ95P+Hz9e4A7EiNQiX1SB2XzL18WZq671r7GahUagbc7TESUZdw==
+  dependencies:
+    "@babel/plugin-transform-runtime" "^7.11.0"
+    "@babel/runtime" "^7.11.2"
+    prop-types "^15.5.8"
+
 react-chartjs-2@^2.11.1:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.11.1.tgz#a78d0df05fc8bc8ffcd4c4ab5b89a25dd2ca3278"
@@ -9871,7 +9890,7 @@ react-router@5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-scripts@3.4.4:
+react-scripts@^3.4.4:
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.4.4.tgz#eef024ed5c566374005e3f509877350ba99d08a7"
   integrity sha512-7J7GZyF/QvZkKAZLneiOIhHozvOMHey7hO9cdO9u68jjhGZlI8hDdOm6UyuHofn6Ajc9Uji5I6Psm/nKNuWdyw==
