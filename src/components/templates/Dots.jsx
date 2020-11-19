@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Dots = (props, { dot }) => {
-	console.log("from Dots.jsx" + props);
+const Dots = ({ dot }) => {
 	const classes = useStyles();
 	return (
 		<div>
@@ -30,8 +28,4 @@ const Dots = (props, { dot }) => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return { dots: state.dots };
-};
-
-export default connect(mapStateToProps)(Dots);
+export default Dots;

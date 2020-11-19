@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import firebase from "../../firebase/firebase";
 import List from "@material-ui/core/List";
@@ -28,52 +27,32 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const MiniDots = (props) => {
-	console.log(props);
-	// const [dots, setDots] = useState([]);
+export default function MiniDots() {
+	const [dots, setDots] = useState([]);
 	const classes = useStyles();
-	// useEffect(() => {
-	// 	firebase
-	// 		.firestore()
-	// 		.collection("dots")
-	// 		.onSnapshot((snapshot) => {
-	// 			setDots(
-	// 				snapshot.docs.map((doc) => {
-	// 					return doc.data();
-	// 				})
-	// 			);
-	// 		});
-	// }, []);
 
-	const list_dotsData = () => {
-		const DOTS_DATA = props.dots.undefined;
-		console.log("from list_dotsData" + DOTS_DATA);
-		if (DOTS_DATA) {
-			DOTS_DATA.map((DOT_DATA) => {
-				return <Dots dot={DOT_DATA} key={DOT_DATA.dotId} />;
+	useEffect(() => {
+		firebase
+			.firestore()
+			.collection("dots")
+			.onSnapshot((snapshot) => {
+				setDots(
+					snapshot.docs.map((doc) => {
+						return doc.data();
+					})
+				);
 			});
-		} else {
-			return <div>list dotsData is working!</div>;
-		}
-	};
+	}, []);
 
 	return (
 		<>
 			<div className={classes.root}>
 				<List component="nav">
-					{list_dotsData}
-					{/* 👉消す */}
-					{/* {dots.map((dot) => {
-						return <Dots dot={dot} key={dot.dotId} />; */}
-					{/* })} */}
+					{dots.map((dot) => {
+						return <Dots dot={dot} key={dot.dotId} />;
+					})}
 				</List>
 			</div>
 		</>
 	);
-};
-
-const mapStateToProps = (state) => {
-	return { dots: state.dots };
-};
-
-export default connect(mapStateToProps)(MiniDots);
+}

@@ -1,10 +1,9 @@
-import { PinDropSharp } from "@material-ui/icons";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import shortid from "shortid";
 import firebase from "../../firebase/firebase";
-import { fetchDots } from "../../redux/dots/actions";
+import { add_dot } from "../../reducks/dots/action";
 
 const Select = React.forwardRef(({ label }, ref) => (
 	<>
@@ -33,10 +32,11 @@ const Select = React.forwardRef(({ label }, ref) => (
 	</>
 ));
 
-const MiniForm = (props) => {
+export default function MiniForm() {
 	const { register, handleSubmit } = useForm();
+	const dispatch = useDispatch();
+
 	const onSubmit = (data) => {
-		// 消す👉firebaseにtext等を送るよう設定。データ保蔵
 		const dotId = shortid.generate();
 		firebase.firestore().collection("dots").doc(dotId).set({
 			dotId: dotId,
@@ -48,7 +48,7 @@ const MiniForm = (props) => {
 			userId: "",
 			createdAt: new Date(),
 		});
-		props.fetchDots();
+		dispatch(add_dot(data));
 	};
 
 	return (
@@ -59,7 +59,4 @@ const MiniForm = (props) => {
 			<input type="submit" value="Send" />
 		</form>
 	);
-};
-
-
-export default connect(null, { fetchDots })(MiniForm);
+}
