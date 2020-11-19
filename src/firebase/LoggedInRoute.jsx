@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { auth } from "../../firebase/firebase";
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { AuthContext } from "./AuthService";
 
-const AuthContext = React.createContext();
+const LoggedInRoute = ({ component: Component, ...rest }) => {
+  const user = useContext(AuthContext);
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-  }, []);
-
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        user ? <Component {...props} /> : <Redirect to={"/signin"} />
+      }
+    />
+  );
 };
 
-export { AuthContext, AuthProvider };
+export default LoggedInRoute;

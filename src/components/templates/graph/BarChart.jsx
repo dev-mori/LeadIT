@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 
 const BarChart = () => {
   const [chartData, setChartData] = useState({});
-
+  
   const chart = () => {
     setChartData({
       labels: [
