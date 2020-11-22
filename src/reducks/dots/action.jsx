@@ -8,7 +8,6 @@ export const add_dot = (dot) => {
 
 export const FETCH_DOT = "FETCH_DOT";
 export const fetch_dot = (dot) => {
-	console.log(dot)
 	return {
 		type: FETCH_DOT,
 		payload: dot,

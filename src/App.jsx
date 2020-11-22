@@ -26,11 +26,10 @@ export default function App() {
 			.then((data) => {
 				const RESPONSE = data.docs.map((doc) => {
 					return doc.data();
-        });
-        console.log(RESPONSE)
+				});
 				dispatch(fetch_dot(RESPONSE));
 			});
-	},[]);
+	}, []);
 
 	return (
 		<AuthProvider>
