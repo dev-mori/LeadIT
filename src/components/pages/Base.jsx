@@ -4,14 +4,15 @@ import Header from "../templates/Header/Header";
 import BarChart from "../templates/graph/BarChart";
 import MiniDots from "../templates/MiniDots";
 import MiniForm from "../templates/MiniForm";
-import Dots from "../templates/Dots";
+// import Dots from "../templates/Dots";
 import { useSelector } from "react-redux";
 import firebase from "../../firebase/firebase";
+import { red } from "@material-ui/core/colors";
 // import UserIcon from "../templates/icons/user/user";
 
 export default function Base() {
   const dots = useSelector((state) => state.dots);
-	// console.log(dots);
+  // console.log(dots);
   const logout = () => {
     firebase.auth().signOut();
   };
@@ -19,7 +20,7 @@ export default function Base() {
     <React.Fragment>
       <Header />
       <div>Index</div>
-      <button style={{ width: "100px", height: "30px" }} onClick={logout}>
+      <button style={{ width: "100px", height: "50px" }} onClick={logout}>
         ログアウト
       </button>
       <MiniForm />
