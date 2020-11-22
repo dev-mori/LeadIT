@@ -52,6 +52,7 @@ export default function MiniForm() {
     dispatch(add_dot(data));
   };
 
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Title</label>
@@ -61,3 +62,4 @@ export default function MiniForm() {
     </form>
   );
 }
+
