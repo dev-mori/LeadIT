@@ -6,6 +6,7 @@ import MiniDots from "../templates/MiniDots";
 import MiniForm from "../templates/MiniForm";
 import Dots from "../templates/Dots";
 import firebase from "../../firebase/firebase";
+import { red } from "@material-ui/core/colors";
 // import UserIcon from "../templates/icons/user/user";
 
 export default function Base() {
