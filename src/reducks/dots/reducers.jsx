@@ -7,6 +7,9 @@ export const DotReducer = (state = initialState, action) => {
 			return [...state, action.payload];
 		case Actions.FETCH_DOT:
 			return action.payload;
+		case Actions.DELETE_DOT:
+			return state.filter((dot) => dot !== action.payload);
+
 		default:
 			return state;
 	}
