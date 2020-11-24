@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import firebase from "../../firebase/firebase";
 import List from "@material-ui/core/List";
 import Dots from "./Dots";
 
@@ -28,21 +28,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDots() {
-	const [dots, setDots] = useState([]);
+	const dots = useSelector((state) => state.dots);
 	const classes = useStyles();
-
-	useEffect(() => {
-		firebase
-			.firestore()
-			.collection("dots")
-			.onSnapshot((snapshot) => {
-				setDots(
-					snapshot.docs.map((doc) => {
-						return doc.data();
-					})
-				);
-			});
-	}, []);
 
 	return (
 		<>
