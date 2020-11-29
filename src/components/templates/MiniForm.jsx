@@ -36,6 +36,8 @@ const Select = React.forwardRef(({ label }, ref) => (
 export default function MiniForm() {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const user = useContext(AuthContext);
+  console.log(user.uid);
 
   const onSubmit = (data) => {
     const dotId = shortid.generate();
@@ -46,7 +48,7 @@ export default function MiniForm() {
       url: "",
       working: data.working,
       tag: "",
-      userId: "",
+      userId: user.uid,
       createdAt: new Date(),
       getday: new Date().getDay(),
     });
@@ -58,7 +60,7 @@ export default function MiniForm() {
         url: "",
         working: data.working,
         tag: "",
-        userId: "",
+        userId: user.uid,
         createdAt: new Date(),
       })
     );
