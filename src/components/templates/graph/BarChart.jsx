@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import {  } from "../Header/HeaderElements";
 
 const BarChart = () => {
   const [chartData, setChartData] = useState({});
-  
+
   const chart = () => {
     setChartData({
       labels: [
@@ -30,14 +31,16 @@ const BarChart = () => {
   }, []);
   return (
     <div className="App">
-      <div style={{ height: "250px", width: "300px" }}>
+      <div style={{ height: "300px", width: "640px" }}>
+ 
         <Line
           data={chartData}
           options={{
             responsive: true,
           }}
-        />
-      </div>
+          />
+      
+          </div>
     </div>
   );
 };

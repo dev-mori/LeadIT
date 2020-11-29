@@ -5,11 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase/firebase";
 
+
 const useStyles = makeStyles((theme) => ({
   primary: {
+    float:'left',
+    height: "20px",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    
+    
   },
 }));
 
@@ -23,16 +28,16 @@ export default function Dots({ dot }) {
     });
   }
   return (
-    <div>
-      <Link style={{ display: "flex" }} to={`/dot/${dot.dotId}`}>
+    <div style={{ display: "flex"  ,   }} >
+      <Link to={`/dot/${dot.dotId}`}>
         <ListItemText
-          className={classes.list}
+        
           primary={dot.title}
           classes={{ primary: classes.primary }}
-        />
-
+        /> 
+     
       </Link>
-      <button onClick={handle_delete}>削除</button>
+        <button onClick={handle_delete}>削除</button>
       <Divider />
     </div>
   );

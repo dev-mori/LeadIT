@@ -4,15 +4,12 @@ import firebase from "../../firebase/firebase";
 import List from "@material-ui/core/List";
 import Dots from "./Dots";
 
+
 const useStyles = makeStyles((theme) => ({
+
 	root: {
-		width: "100%",
-		height: "50vh",
-		maxWidth: 400,
-		backgroundColor: theme.palette.background.paper,
-		margin: "auto",
-		marginTop: 10,
-		position: "relative",
+		
+
 	},
 	primary: {
 		whiteSpace: "nowrap",
@@ -45,7 +42,7 @@ export default function MiniDots() {
 	}, []);
 
 	return (
-		<>
+
 			<div className={classes.root}>
 				<List component="nav">
 					{dots.map((dot) => {
@@ -53,6 +50,6 @@ export default function MiniDots() {
 					})}
 				</List>
 			</div>
-		</>
+					
 	);
 }

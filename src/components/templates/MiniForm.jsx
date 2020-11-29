@@ -6,6 +6,7 @@ import { AuthContext } from "../../firebase/AuthService";
 import firebase from "../../firebase/firebase";
 import { add_dot } from "../../reducks/dots/action";
 
+
 const Select = React.forwardRef(({ label }, ref) => (
   <>
     <label>{label}</label>
@@ -54,12 +55,16 @@ export default function MiniForm() {
 
 
   return (
+   
+      <>
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Title</label>
       <input name="title" ref={register({ required: true })} />
       <Select label="working" ref={register({ required: true })} />
       <input type="submit" value="Send" />
     </form>
+    </>
+      
   );
 }
 
