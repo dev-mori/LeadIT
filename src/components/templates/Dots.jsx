@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase/firebase";
 import { delete_dot } from "../../reducks/dots/action";
+import { unset_star } from "../../reducks/star/action";
 
 const useStyles = makeStyles((theme) => ({
 	primary: {
@@ -17,12 +18,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dots({ dot }) {
 	const classes = useStyles();
+	const star = useSelector((state) => state.star);
+	// 消す
+	console.log(star);
 
 	const dispatch = useDispatch();
 
 	const handle_delete = () => {
 		// -----画面上からdotを消す-----//
 		dispatch(delete_dot(dot));
+		// ---Star用---//
+		// if(今日のdotがまだあるときのみ、stateに-1を行う)
+		if (star) {
+			dispatch(unset_star(1));
+		}
 
 		// -----firebaseからdotを消す-----//
 		firebase
