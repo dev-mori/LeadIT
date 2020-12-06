@@ -1,5 +1,4 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 import Header from "../templates/Header/Header.jsx";
 import Footer from "../templates/Footer/Footer.jsx";
 
@@ -9,7 +8,7 @@ const bodyStyle = {
 }
 
 
-const Form = () => {
+const OurDots = () => {
 
   return (
     <React.Fragment>
@@ -41,4 +40,4 @@ const Form = () => {
 
   );
 };
-export default Form;
+export default OurDots;

@@ -10,10 +10,11 @@ import SignUp from "./components/pages/SignUp";
 import MyDots from "./components/pages/MyDots";
 import DotDetail from "./components/pages/DotDetail";
 import Form from "./components/pages/Form";
+import OurDots from "./components/pages/OurDots";
 import firebase from "./firebase/firebase";
 import { AuthProvider } from "./firebase/AuthService";
 import LoggedInRoute from "./firebase/LoggedInRoute";
-// import OurDots from "./components/pages/OurDots";
+
 
 
 export default function App() {
@@ -43,7 +44,9 @@ export default function App() {
 					<Route exact path="/mydots" component={MyDots} />
 					<Route exact path="/form" component={Form} />
 					<Route exact path="/dot/:id" component={DotDetail} />
-					{/* <Route exact path="/ourdots" component={OurDots} /> */}
+					<Route exact path="/mydots" component={MyDots} />
+					<Route exact path="/ourdots" component={OurDots} />
+					
 				</Switch>
 			</Router>
 		</AuthProvider>
