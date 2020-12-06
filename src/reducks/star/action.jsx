@@ -7,17 +7,15 @@ export const fetch_todayDotLength = (todayDotLength) => {
 };
 
 export const SET_STAR = "SET_STAR";
-export const set_star = (todayDotLength) => {
+export const set_star = () => {
 	return {
 		type: SET_STAR,
-		payload: todayDotLength,
 	};
 };
 
 export const UNSET_STAR = "UNSET_STAR";
-export const unset_star = (todayDot) => {
+export const unset_star = () => {
 	return {
 		type: UNSET_STAR,
-		payload: todayDot,
 	};
 };

@@ -6,9 +6,9 @@ export const StarReducer = (state = initialState, action) => {
 		case Actions.FETCH_TODAY_DOT_LENGTH:
 			return action.payload;
 		case Actions.SET_STAR:
-			return state + action.payload;
+			return 1;
 		case Actions.UNSET_STAR:
-			return state - action.payload;
+			return 0;
 
 		default:
 			return state;

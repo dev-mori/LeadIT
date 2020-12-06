@@ -18,19 +18,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dots({ dot }) {
 	const classes = useStyles();
-	const star = useSelector((state) => state.star);
-	// 消す
-	console.log(star);
-
 	const dispatch = useDispatch();
+	const dotTime = dot.createdAt.seconds * 1000;
+	const dots = useSelector((state) => state.dots);
+	console.log(dots);
 
 	const handle_delete = () => {
 		// -----画面上からdotを消す-----//
 		dispatch(delete_dot(dot));
-		// ---Star用---//
-		// if(今日のdotがまだあるときのみ、stateに-1を行う)
-		if (star) {
-			dispatch(unset_star(1));
+
+		// -----Star黒くする用-----//
+		const get_todayMidnight = () => {
+			const TODAY_MIDNIGHT = new Date();
+			TODAY_MIDNIGHT.setHours(0);
+			TODAY_MIDNIGHT.setMinutes(0);
+			return TODAY_MIDNIGHT.setSeconds(0);
+		};
+		// if(そのdotが今日のものだったとき、unset_starの実行)
+		if (dotTime >= new Date(get_todayMidnight())) {
+			dispatch(unset_star());
 		}
 
 		// -----firebaseからdotを消す-----//

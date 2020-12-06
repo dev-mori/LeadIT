@@ -38,7 +38,6 @@ export default function MiniForm() {
 	const { register, handleSubmit } = useForm();
 	const dispatch = useDispatch();
 	const user = useContext(AuthContext);
-	console.log(user.uid);
 
 	const onSubmit = (data) => {
 		const dotId = shortid.generate();
@@ -65,7 +64,7 @@ export default function MiniForm() {
 				createdAt: new Date(),
 			})
 		);
-		dispatch(set_star(1));
+		dispatch(set_star());
 	};
 
 	return (

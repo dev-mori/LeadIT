@@ -39,8 +39,6 @@ export default function Base() {
 				const todayDot = data.docs.map((doc) => {
 					return doc.data();
 				});
-				// 👇消す
-				console.log(todayDot.length)
 				dispatch(fetch_todayDotLength(todayDot.length));
 			});
 	}, []);
