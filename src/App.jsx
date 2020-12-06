@@ -14,7 +14,6 @@ import firebase from "./firebase/firebase";
 import { AuthProvider } from "./firebase/AuthService";
 import LoggedInRoute from "./firebase/LoggedInRoute";
 
-// import Form from "./components/pages/Form";
 
 export default function App() {
 	const dispatch = useDispatch();
@@ -43,6 +42,7 @@ export default function App() {
 					<Route exact path="/mydots" component={MyDots} />
 					<Route exact path="/form" component={Form} />
 					<Route exact path="/dot/:id" component={DotDetail} />
+		
 				</Switch>
 			</Router>
 		</AuthProvider>
