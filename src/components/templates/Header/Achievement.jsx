@@ -5,7 +5,6 @@ import blackStarImg from "../../pages/img/blackstar.png";
 
 export default function Achievement() {
 	const star = useSelector((state) => state.star);
-	console.log(star);
 
 	const show_star = () => {
 		if (star > 0) {

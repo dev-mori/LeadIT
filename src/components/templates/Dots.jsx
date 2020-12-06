@@ -21,12 +21,12 @@ export default function Dots({ dot }) {
 	const dispatch = useDispatch();
 	const dotTime = dot.createdAt.seconds * 1000;
 	const dots = useSelector((state) => state.dots);
-	console.log(dots);
 
 	const handle_delete = () => {
 		// -----画面上からdotを消す-----//
 		dispatch(delete_dot(dot));
 
+		console.log(dot);
 		// -----Star黒くする用-----//
 		const get_todayMidnight = () => {
 			const TODAY_MIDNIGHT = new Date();
@@ -34,8 +34,9 @@ export default function Dots({ dot }) {
 			TODAY_MIDNIGHT.setMinutes(0);
 			return TODAY_MIDNIGHT.setSeconds(0);
 		};
+
 		// if(そのdotが今日のものだったとき、unset_starの実行)
-		if (dotTime >= new Date(get_todayMidnight())) {
+		if (new Date(dotTime) >= new Date(get_todayMidnight())) {
 			dispatch(unset_star());
 		}
 
