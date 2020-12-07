@@ -19,14 +19,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Dots({ dot }) {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const dotTime = dot.createdAt.seconds * 1000;
-	const dots = useSelector((state) => state.dots);
+	let dotTime = 0;
 
 	const handle_delete = () => {
 		// -----画面上からdotを消す-----//
 		dispatch(delete_dot(dot));
 
-		console.log(dot);
 		// -----Star黒くする用-----//
 		const get_todayMidnight = () => {
 			const TODAY_MIDNIGHT = new Date();
@@ -34,9 +32,14 @@ export default function Dots({ dot }) {
 			TODAY_MIDNIGHT.setMinutes(0);
 			return TODAY_MIDNIGHT.setSeconds(0);
 		};
+	
+		if (new Date(dot.createdAt).toString() === "Invalid Date") {
+			dotTime = new Date(dot.createdAt.seconds * 1000);
+		} else {
+			dotTime = new Date(dot.createdAt);
+		}
 
-		// if(そのdotが今日のものだったとき、unset_starの実行)
-		if (new Date(dotTime) >= new Date(get_todayMidnight())) {
+		if (dotTime >= new Date(get_todayMidnight())) {
 			dispatch(unset_star());
 		}
 

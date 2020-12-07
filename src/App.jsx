@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetch_dot } from "./reducks/dots/action";
+import { fetch_dot, fetch_dots } from "./reducks/dots/action";
 import { fetch_today_dot } from "./reducks/star/action";
 import Base from "./components/pages/Base";
 import Home from "./components/pages/Home";
@@ -30,7 +30,7 @@ export default function App() {
 				const RESPONSE = data.docs.map((doc) => {
 					return doc.data();
 				});
-				dispatch(fetch_dot(RESPONSE));
+				dispatch(fetch_dots(RESPONSE));
 			});
 	}, []);
 
