@@ -34,25 +34,25 @@ const bodyStyle = {
 }
 
 
-export default function OurDots  () {
+export default function OurDots() {
   const dots = useSelector((state) => state.dots);
   const classes = useStyles();
   return (
     <React.Fragment>
       <Header />
       <div className="MainBody" style={bodyStyle}>
-      <div >
-        <h1>＃探す</h1>
-        <h3>Java</h3>
-        <h3>PHP</h3>
-        <h3>JavaScript</h3>
-        <h3>Python</h3>
-        <h3>C++</h3>
-        <h3>C#</h3>
-        <h3>unity</h3>
-        <h3>COBOL</h3>
-        <h3>Swift</h3>
-      </div>
+        <div >
+          <h1>＃探す</h1>
+          <h3>Java</h3>
+          <h3>PHP</h3>
+          <h3>JavaScript</h3>
+          <h3>Python</h3>
+          <h3>C++</h3>
+          <h3>C#</h3>
+          <h3>unity</h3>
+          <h3>COBOL</h3>
+          <h3>Swift</h3>
+        </div>
         <div className={classes.root}>
           <List component="nav">
             {dots.map((dot) => {
@@ -60,10 +60,11 @@ export default function OurDots  () {
             })}
           </List>
         </div>
-    </div>
+      </div>
       <Footer />
     </React.Fragment>
 
   );
 };
 
+//l
