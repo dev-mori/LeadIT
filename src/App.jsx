@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetch_dot } from "./reducks/dots/action";
+import { fetch_dot, fetch_dots } from "./reducks/dots/action";
+import { fetch_today_dot } from "./reducks/star/action";
 import Base from "./components/pages/Base";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
@@ -13,12 +14,14 @@ import Form from "./components/pages/Form";
 import OurDots from "./components/pages/OurDots";
 import firebase from "./firebase/firebase";
 import { AuthProvider } from "./firebase/AuthService";
+import { AuthContext } from "./firebase/AuthService";
 import LoggedInRoute from "./firebase/LoggedInRoute";
 
 
 
 export default function App() {
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		firebase
 			.firestore()
@@ -28,7 +31,7 @@ export default function App() {
 				const RESPONSE = data.docs.map((doc) => {
 					return doc.data();
 				});
-				dispatch(fetch_dot(RESPONSE));
+				dispatch(fetch_dots(RESPONSE));
 			});
 	}, []);
 
