@@ -1,8 +1,25 @@
 import React, { useState } from "react";
 import Avatar from "react-avatar-edit";
+import firebase from "firebase";
 
 const CreateAvatar = ({ getData }) => {
   const [preview, setPreview] = useState("");
+  const currentUser = firebase.auth().currentUser;
+  const db = firebase.firestore().collection("userIcon");
+
+  const set_userIcon = (preview) => {
+    // blobに変換
+    const blob = preview;
+    // firestoreに保存
+    db.doc(currentUser.uid)
+      .set({
+        userName: currentUser.displayName,
+        img: blob,
+        time: new Date(),
+        // blobId: shortid.generate(),
+      })
+      .catch((error) => console.log(error));
+  };
 
   const onCrop = (defaultPreview) => {
     setPreview(defaultPreview);
@@ -16,6 +33,7 @@ const CreateAvatar = ({ getData }) => {
 
   const onSelectPic = () => {
     getData(false, preview);
+    set_userIcon(preview);
   };
 
   const onCancelSelect = () => {
