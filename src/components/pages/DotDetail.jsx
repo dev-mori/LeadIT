@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import firebase from "../../firebase/firebase";
+import Header from "../templates/Header/Header";
+import Footer from "../templates/Footer/Footer";
 import styled from "styled-components";
 import Avatar from "@material-ui/core/Avatar"; //ひとまずのimport
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,15 +16,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const TOP_WRAPPER = styled.div`
-  width: 100px
-  height: 100vh
-`;
 
 const INNER = styled.div`
 	display: flex;
 	width: 60%;
-	height: 100vh;
 	margin: auto;
 	padding: 6% 2%;
 `;
@@ -33,12 +30,13 @@ const DETAIL_WRAPPER = styled.div`
 
 const TEXT = styled.div`
 	font-size: 1.2rem;
-	height: 65%;
+  height: 65%;
+  padding-bottom: 10%;
 `;
 
 const IMG_WRAPPER = styled.div`
   width: 100%;
-  padding-bottom: 10%;
+	padding-bottom: 10%;
 `;
 
 const IMG = styled.img`
@@ -97,18 +95,19 @@ export default function DotDetail() {
 				"/" +
 				month +
 				"/" +
-        date +
-        "の勉強時間" +
-        "：" +
-        dot.working +
-        " 時間"
+				date +
+				"の勉強時間" +
+				"：" +
+				dot.working +
+				" 時間"
 			);
 		}
 	};
 
 	return (
-		<React.Fragment>
-			<TOP_WRAPPER>
+
+			<div style={{height: "10vh" }}>
+			<Header />
 				<INNER>
 					<diV>
 						<Avatar src="/broken-image.jpg" className={classes.large} />
@@ -130,7 +129,13 @@ export default function DotDetail() {
 						</IMG_WRAPPER>
 
 						<IMG_WRAPPER>
-							<IMG src={clockImg} title="時計" alt="時計のアイコン" align= "middle"/>今週の合計勉強時間：30時間
+							<IMG
+								src={clockImg}
+								title="時計"
+								alt="時計のアイコン"
+								align="middle"
+							/>
+							今週の合計勉強時間：30時間
 						</IMG_WRAPPER>
 
 						{/* {dot && <p>title : {dot.title}</p>}
@@ -140,7 +145,8 @@ export default function DotDetail() {
 						{dot && <p>text : {dot.text}</p>} */}
 					</DETAIL_WRAPPER>
 				</INNER>
-			</TOP_WRAPPER>
-		</React.Fragment>
+      <Footer />
+			</div>
+
 	);
 }
