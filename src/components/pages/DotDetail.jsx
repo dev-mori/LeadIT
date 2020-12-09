@@ -4,7 +4,8 @@ import firebase from "../../firebase/firebase";
 import styled from "styled-components";
 import Avatar from "@material-ui/core/Avatar"; //ひとまずのimport
 import { makeStyles } from "@material-ui/core/styles";
-import CalendarImg from "../pages/img/calendar.png";
+import calendarImg from "../pages/img/calendar.png";
+import clockImg from "../pages/img/alarm-clock.png";
 
 const useStyles = makeStyles((theme) => ({
 	large: {
@@ -23,7 +24,6 @@ const INNER = styled.div`
 	width: 60%;
 	height: 100vh;
 	margin: auto;
-	background-color: #ffebcd;
 	padding: 6% 2%;
 `;
 
@@ -36,7 +36,12 @@ const TEXT = styled.div`
 	height: 65%;
 `;
 
-const CALENDAR = styled.img`
+const IMG_WRAPPER = styled.div`
+  width: 100%;
+  padding-bottom: 10%;
+`;
+
+const IMG = styled.img`
 	width: 55px;
 	padding-right: 2%;
 `;
@@ -87,7 +92,17 @@ export default function DotDetail() {
 			const minute = createdAt.getMinutes();
 			console.log(year);
 			// return dot.working + "h";
-			return dot.working + "時間"　+ "　" + year + "/" + month  + "/" + date + " "  +   hour + ":" + minute
+			return (
+				year +
+				"/" +
+				month +
+				"/" +
+        date +
+        "の勉強時間" +
+        "：" +
+        dot.working +
+        " 時間"
+			);
 		}
 	};
 
@@ -104,13 +119,20 @@ export default function DotDetail() {
 							勉強時間は?時間だった。
 							今日の勉強で？？？の記事(URL)が役に立った。
 						</TEXT>
-						<CALENDAR
-							src={CalendarImg}
-							title="カレンダー"
-							alt="カレンダーのアイコン "
-							align="middle"
-						/>{" "}
-						{render_workTime()}
+						<IMG_WRAPPER>
+							<IMG
+								src={calendarImg}
+								title="カレンダー"
+								alt="カレンダーのアイコン "
+								align="middle"
+							/>
+							{render_workTime()}
+						</IMG_WRAPPER>
+
+						<IMG_WRAPPER>
+							<IMG src={clockImg} title="時計" alt="時計のアイコン" align= "middle"/>今週の合計勉強時間：30時間
+						</IMG_WRAPPER>
+
 						{/* {dot && <p>title : {dot.title}</p>}
 						{dot && <p>tag : {dot.tag}</p>}
 						{dot && <p>url : {dot.url}</p>}
