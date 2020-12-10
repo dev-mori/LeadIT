@@ -5,6 +5,7 @@ import firebase from "firebase";
 const BarChart = () => {
   const db = firebase.firestore().collection("dots");
   const [filledWeek, set_filledWeek] = useState([]);
+  const currentUserId = firebase.auth().currentUser.uid;
 
   const zeroAdjust = () => {
     let agoDate = new Date();
@@ -47,11 +48,12 @@ const BarChart = () => {
   };
 
   useEffect(() => {
-    db.where(
-      "createdAt",
-      ">",
-      firebase.firestore.Timestamp.fromDate(zeroAdjust())
-    )
+    db.where("userId", "==", currentUserId)
+      .where(
+        "createdAt",
+        ">",
+        firebase.firestore.Timestamp.fromDate(zeroAdjust())
+      )
       .orderBy("createdAt")
       .onSnapshot((snapshot) => {
         const hope = init_arrayWeeks().weekData;
