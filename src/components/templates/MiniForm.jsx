@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import shortid from "shortid";
 import { AuthContext } from "../../firebase/AuthService";
 import firebase from "../../firebase/firebase";
@@ -37,23 +37,13 @@ const Select = React.forwardRef(({ label }, ref) => (
 export default function MiniForm() {
 	const { register, handleSubmit } = useForm();
 	const dispatch = useDispatch();
+	const star = useSelector((state) => state.star);
 	const user = useContext(AuthContext);
 
 	const onSubmit = (data) => {
 		const dotId = shortid.generate();
-		firebase.firestore().collection("dots").doc(dotId).set({
-			dotId: dotId,
-			title: data.title,
-			text: "",
-			url: "",
-			working: data.working,
-			tag: "",
-			userId: user.uid,
-			createdAt: new Date(),
-			getday: new Date().getDay(),
-		});
-		dispatch(
-			add_dot({
+		if (star === 0) {
+			firebase.firestore().collection("dots").doc(dotId).set({
 				dotId: dotId,
 				title: data.title,
 				text: "",
@@ -62,9 +52,28 @@ export default function MiniForm() {
 				tag: "",
 				userId: user.uid,
 				createdAt: new Date(),
-			})
-		);
-		dispatch(set_star());
+				getday: new Date().getDay(),
+			});
+			dispatch(
+				add_dot({
+					dotId: dotId,
+					title: data.title,
+					text: "",
+					url: "",
+					working: data.working,
+					tag: "",
+					userId: user.uid,
+					createdAt: new Date(),
+				})
+			);
+			dispatch(set_star());
+		}
+	};
+
+	const set_send = () => {
+		if (star === 0) {
+			return <input type="submit" value="Send" />;
+		}
 	};
 
 	return (
@@ -72,7 +81,7 @@ export default function MiniForm() {
 			<label>Title</label>
 			<input name="title" ref={register({ required: true })} />
 			<Select label="working" ref={register({ required: true })} />
-			<input type="submit" value="Send" />
+			{set_send()}
 		</form>
 	);
 }
