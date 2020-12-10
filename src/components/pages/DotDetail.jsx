@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import firebase from "../../firebase/firebase";
+import SideBar from "../templates/SideBar";
 
 export default function DotDetail() {
   const { id } = useParams();
@@ -34,6 +35,7 @@ export default function DotDetail() {
 
   return (
     <React.Fragment>
+      <SideBar />
       {dot && <p>title : {dot.title}</p>}
       {dot && <p>tag : {dot.tag}</p>}
       {dot && <p>url : {dot.url}</p>}
