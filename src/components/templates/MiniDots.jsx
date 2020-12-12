@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MiniDots() {
   const dots = useSelector((state) => state.dots);
-  console.log(dots)
   const classes = useStyles();
   const currentUserId = firebase.auth().currentUser.uid;
 

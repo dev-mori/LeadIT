@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { delete_dot } from "../../reducks/dots/action";
 import { fetch_todayDotLength } from "../../reducks/star/action";
 import firebase from "../../firebase/firebase";
@@ -60,7 +60,6 @@ export default function DotDetail() {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const user = useContext(AuthContext);
-	const currentUser = firebase.auth().currentUser;
 	const [dot, set_dot] = useState();
 
 	
@@ -124,7 +123,7 @@ export default function DotDetail() {
 	};
 
 	const show_editAndDeleteButtons = () => {
-		if (currentUser && dot && currentUser.uid === dot.userId) {
+		if (user && dot && user.uid === dot.userId) {
 			return (
 				<div style={{ display: "flex" }}>
 					<Button
