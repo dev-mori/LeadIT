@@ -64,13 +64,14 @@ export default function MiniForm() {
 					tag: "",
 					userId: user.uid,
 					createdAt: new Date(),
+					getday: new Date().getDay(),
 				})
 			);
 			dispatch(set_star());
 		}
 	};
 
-	const set_send = () => {
+	const setSendButton = () => {
 		if (star === 0) {
 			return <input type="submit" value="Send" />;
 		}
@@ -81,7 +82,7 @@ export default function MiniForm() {
 			<label>Title</label>
 			<input name="title" ref={register({ required: true })} />
 			<Select label="working" ref={register({ required: true })} />
-			{set_send()}
+			{setSendButton()}
 		</form>
 	);
 }

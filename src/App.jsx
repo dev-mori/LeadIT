@@ -22,6 +22,7 @@ import LoggedInRoute from "./firebase/LoggedInRoute";
 export default function App() {
 	const dispatch = useDispatch();
 
+
 	useEffect(() => {
 		firebase
 			.firestore()
