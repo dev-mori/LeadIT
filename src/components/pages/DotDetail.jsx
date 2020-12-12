@@ -89,7 +89,7 @@ export default function DotDetail() {
 			const hour = createdAt.getHours();
 			const minute = createdAt.getMinutes();
 			console.log(year);
-			// return dot.working + "h";
+			// return dot.working + "h"	;
 			return (
 				year +
 				"/" +
