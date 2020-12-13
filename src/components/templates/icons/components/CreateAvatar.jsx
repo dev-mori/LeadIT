@@ -15,7 +15,7 @@ const CreateAvatar = ({ getData }) => {
     // firestoreに保存
     db.doc(currentUser.uid)
       .set({
-        userName: currentUser.displayName,
+        userName: user.displayName,
         img: blob,
         time: new Date(),
         userId: user.uid,

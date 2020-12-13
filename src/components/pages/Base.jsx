@@ -14,6 +14,7 @@ import { fetch_todayDotLength } from "../../reducks/star/action";
 import { red } from "@material-ui/core/colors";
 // import UserIcon from "../templates/icons/user/user";
 import { Bodyleft } from "../templates/Header/HeaderElements";
+// import Ranking from "./Ranking";
 
 export default function Base() {
   const dispatch = useDispatch();
@@ -53,7 +54,6 @@ export default function Base() {
         <MiniForm />
         <MiniDots />
       </Bodyleft>
-
       {/* <UserIcon /> */}
       <Footer />
       <div>Index</div>
