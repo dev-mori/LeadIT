@@ -55,6 +55,7 @@ export default function MiniForm() {
 					working: Number(data.working),
 					tags: [],
 					userId: user.uid,
+					userName: user.displayName,
 					createdAt: new Date(),
 					getday: new Date().getDay(),
 				});
@@ -67,6 +68,7 @@ export default function MiniForm() {
 					working: Number(data.working),
 					tags: [],
 					userId: user.uid,
+					userName: user.displayName,
 					createdAt: new Date(),
 				})
 			);

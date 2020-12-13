@@ -80,6 +80,7 @@ const Form = () => {
 					working: Number(data.working),
 					tags: tags,
 					userId: user.uid,
+					userName: user.displayName,
 					createdAt: new Date(),
 					getday: new Date().getDay(),
 				});
@@ -92,6 +93,7 @@ const Form = () => {
 					working: Number(data.working),
 					tags: tags,
 					userId: user.uid,
+					userName: user.displayName,
 					createdAt: new Date(),
 				})
 			);
