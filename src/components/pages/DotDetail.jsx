@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { delete_dot } from "../../reducks/dots/action";
+import { fetch_todayDotLength } from "../../reducks/star/action";
 import firebase from "../../firebase/firebase";
+import { AuthContext } from "../../firebase/AuthService";
 import Header from "../templates/Header/Header";
 import Footer from "../templates/Footer/Footer";
 import styled from "styled-components";
@@ -8,6 +12,9 @@ import Avatar from "@material-ui/core/Avatar"; //ひとまずのimport
 import { makeStyles } from "@material-ui/core/styles";
 import calendarImg from "../pages/img/calendar.png";
 import clockImg from "../pages/img/alarm-clock.png";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
 	large: {
@@ -15,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 		height: theme.spacing(7),
 	},
 }));
-
 
 const INNER = styled.div`
 	display: flex;
@@ -30,13 +36,13 @@ const DETAIL_WRAPPER = styled.div`
 
 const TEXT = styled.div`
 	font-size: 1.2rem;
-  height: 65%;
-  padding-bottom: 10%;
+	height: 65%;
+	padding-bottom: 10%;
 `;
 
 const IMG_WRAPPER = styled.div`
-  width: 100%;
-	padding-bottom: 10%;
+	width: 100%;
+	// padding-bottom: 10%;
 `;
 
 const IMG = styled.img`
@@ -49,9 +55,101 @@ const P = styled.p`
 `;
 
 export default function DotDetail() {
-	const { id } = useParams();
-	const [dot, set_dot] = useState();
 	const classes = useStyles();
+	const { id } = useParams();
+	const history = useHistory();
+	const dispatch = useDispatch();
+	const user = useContext(AuthContext);
+	const [dot, set_dot] = useState();
+
+	
+	useEffect(() => {
+		firebase
+			.firestore()
+			.collection("dots")
+			.get()
+			.then((data) => {
+				const dots = data.docs.map((doc) => {
+					return doc.data();
+				});
+				set_dot(dots.find((dot) => dot.dotId == id));
+			});
+	}, []);
+
+	// ----今日のdot作ってるか確認------//
+	const get_todayMidnight = () => {
+		const TODAY_MIDNIGHT = new Date();
+		TODAY_MIDNIGHT.setHours(0);
+		TODAY_MIDNIGHT.setMinutes(0);
+		return TODAY_MIDNIGHT.setSeconds(0);
+	};
+
+	if (user) {
+		firebase
+			.firestore()
+			.collection("dots")
+			.where("userId", "==", user.uid)
+			.where("createdAt", ">=", new Date(get_todayMidnight()))
+			.get()
+			.then((data) => {
+				const todayDot = data.docs.map((doc) => {
+					return doc.data();
+				});
+				dispatch(fetch_todayDotLength(todayDot.length));
+			});
+	}
+	// -----------------------
+
+	
+	const onEdit_click = () => {
+		console.log("edit click");
+	};
+
+	const onDelete_click = () => {
+		console.log(dot);
+		firebase
+			.firestore()
+			.collection("dots")
+			.doc(dot.dotId)
+			.delete()
+			.then(function () {
+				console.log("Document successfully deleted!");
+				dispatch(delete_dot(dot));
+				history.push("/");
+			})
+			.catch(function (error) {
+				console.error("Error removing document: ", error);
+			});
+	};
+
+	const show_editAndDeleteButtons = () => {
+		if (user && dot && user.uid === dot.userId) {
+			return (
+				<div style={{ display: "flex" }}>
+					<Button
+						variant="contained"
+						color="primary"
+						className={classes.button}
+						startIcon={<DeleteIcon />}
+						style={{ left: "92%" }}
+						onClick={onEdit_click}
+					>
+						編集
+					</Button>
+					<Button
+						variant="contained"
+						color="secondary"
+						className={classes.button}
+						startIcon={<DeleteIcon />}
+						style={{ left: "100%" }}
+						onClick={onDelete_click}
+					>
+						消去
+					</Button>
+				</div>
+			);
+		}
+	};
 
 	// const dot = firebase
 	//   .firestore()
@@ -68,17 +166,7 @@ export default function DotDetail() {
 	// .then((doc) => {
 	//   return doc;
 	// });
-	useEffect(() => {
-		firebase
-			.firestore()
-			.collection("dots")
-			.onSnapshot((snapshot) => {
-				const dots = snapshot.docs.map((doc) => {
-					return doc.data();
-				});
-				set_dot(dots.find((dot) => dot.dotId == id));
-			});
-	}, []);
+
 
 	const render_workTime = () => {
 		if (dot) {
@@ -88,8 +176,6 @@ export default function DotDetail() {
 			const date = createdAt.getDate();
 			const hour = createdAt.getHours();
 			const minute = createdAt.getMinutes();
-			console.log(year);
-			// return dot.working + "h"	;
 			return (
 				year +
 				"/" +
@@ -105,48 +191,47 @@ export default function DotDetail() {
 	};
 
 	return (
-
-			<div style={{height: "10vh" }}>
+		<div style={{ height: "10vh" }}>
 			<Header />
-				<INNER>
-					<diV>
-						<Avatar src="/broken-image.jpg" className={classes.large} />
-					</diV>
-					<DETAIL_WRAPPER>
-						<TEXT>
-							今日はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-							勉強時間は?時間だった。
-							今日の勉強で？？？の記事(URL)が役に立った。
-						</TEXT>
-						<IMG_WRAPPER>
-							<IMG
-								src={calendarImg}
-								title="カレンダー"
-								alt="カレンダーのアイコン "
-								align="middle"
-							/>
-							{render_workTime()}
-						</IMG_WRAPPER>
+			<INNER>
+				<diV>
+					<Avatar src="/broken-image.jpg" className={classes.large} />
+				</diV>
+				<DETAIL_WRAPPER>
+					<TEXT>
+						今日はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+						勉強時間は?時間だった。 今日の勉強で？？？の記事(URL)が役に立った。
+					</TEXT>
+					<IMG_WRAPPER style={{ paddingBottom: "10%" }}>
+						<IMG
+							src={calendarImg}
+							title="カレンダー"
+							alt="カレンダーのアイコン "
+							align="middle"
+						/>
+						{render_workTime()}
+					</IMG_WRAPPER>
 
-						<IMG_WRAPPER>
-							<IMG
-								src={clockImg}
-								title="時計"
-								alt="時計のアイコン"
-								align="middle"
-							/>
-							今週の合計勉強時間：30時間
-						</IMG_WRAPPER>
+					<IMG_WRAPPER style={{ paddingBottom: "2%" }}>
+						<IMG
+							src={clockImg}
+							title="時計"
+							alt="時計のアイコン"
+							align="middle"
+						/>
+						今週の合計勉強時間：30時間
+					</IMG_WRAPPER>
+					<span>{show_editAndDeleteButtons()}</span>
 
-						{/* {dot && <p>title : {dot.title}</p>}
+					{/* {dot && <p>title : {dot.title}</p>}
 						{dot && <p>tag : {dot.tag}</p>}
 						{dot && <p>url : {dot.url}</p>}
 						{dot && <p>working : {dot.working}</p>}
 						{dot && <p>text : {dot.text}</p>} */}
-					</DETAIL_WRAPPER>
-				</INNER>
-      <Footer />
-			</div>
+				</DETAIL_WRAPPER>
+			</INNER>
+			<Footer />
+		</div>
 
 	);
 }

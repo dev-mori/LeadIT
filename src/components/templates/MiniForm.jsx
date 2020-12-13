@@ -43,26 +43,32 @@ export default function MiniForm() {
 	const onSubmit = (data) => {
 		const dotId = shortid.generate();
 		if (star === 0) {
-			firebase.firestore().collection("dots").doc(dotId).set({
-				dotId: dotId,
-				title: data.title,
-				text: "",
-				url: "",
-				working: data.working,
-				tag: "",
-				userId: user.uid,
-				createdAt: new Date(),
-				getday: new Date().getDay(),
-			});
+			firebase
+				.firestore()
+				.collection("dots")
+				.doc(dotId)
+				.set({
+					dotId: dotId,
+					title: data.title,
+					text: "",
+					url: "",
+					working: Number(data.working),
+					tags: [],
+					userId: user.uid,
+					userName: user.displayName,
+					createdAt: new Date(),
+					getday: new Date().getDay(),
+				});
 			dispatch(
 				add_dot({
 					dotId: dotId,
 					title: data.title,
 					text: "",
 					url: "",
-					working: data.working,
-					tag: "",
+					working: Number(data.working),
+					tags: [],
 					userId: user.uid,
+					userName: user.displayName,
 					createdAt: new Date(),
 				})
 			);
@@ -70,7 +76,7 @@ export default function MiniForm() {
 		}
 	};
 
-	const set_send = () => {
+	const setSendButton = () => {
 		if (star === 0) {
 			return <input type="submit" value="Send" />;
 		}
@@ -81,7 +87,7 @@ export default function MiniForm() {
 			<label>Title</label>
 			<input name="title" ref={register({ required: true })} />
 			<Select label="working" ref={register({ required: true })} />
-			{set_send()}
+			{setSendButton()}
 		</form>
 	);
 }

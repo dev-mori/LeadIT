@@ -1,4 +1,5 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import firebase from "../../firebase/firebase";
@@ -7,6 +8,10 @@ import { AuthContext } from "../../firebase/AuthService";
 import TextField from "@material-ui/core/TextField";
 import Header from "../templates/Header/Header.jsx";
 import Footer from "../templates/Footer/Footer.jsx";
+import FormSideBar from "../templates/FormSideBar";
+import shortid from "shortid";
+import { add_dot } from "../../reducks/dots/action";
+import { set_star } from "../../reducks/star/action";
 
 const useStyles = makeStyles({
 	container: {
@@ -30,9 +35,11 @@ const bodyStyle = {
 
 const Form = () => {
 	const classes = useStyles();
+	const { register, handleSubmit } = useForm();
+	const dispatch = useDispatch();
 	const user = useContext(AuthContext);
 	const star = useSelector((state) => state.star);
-	const dispatch = useDispatch();
+	const [tags, set_tags] = useState([]);
 
 	// ----今日のdot作ってるか確認------//
 	const get_todayMidnight = () => {
@@ -58,10 +65,39 @@ const Form = () => {
 	}
 	// -----------------------
 
-	const handle_submit = (e) => {
+	const onSubmit = (data) => {
+		const dotId = shortid.generate();
 		if (star === 0) {
-			e.preventDefault();
-			console.log("form submit!");
+			firebase
+				.firestore()
+				.collection("dots")
+				.doc(dotId)
+				.set({
+					dotId: dotId,
+					title: data.title,
+					text: "",
+					url: "",
+					working: Number(data.working),
+					tags: tags,
+					userId: user.uid,
+					userName: user.displayName,
+					createdAt: new Date(),
+					getday: new Date().getDay(),
+				});
+			dispatch(
+				add_dot({
+					dotId: dotId,
+					title: data.title,
+					text: "",
+					url: "",
+					working: Number(data.working),
+					tags: tags,
+					userId: user.uid,
+					userName: user.displayName,
+					createdAt: new Date(),
+				})
+			);
+			dispatch(set_star());
 		}
 	};
 
@@ -69,18 +105,9 @@ const Form = () => {
 		<React.Fragment>
 			<Header />
 			<div style={bodyStyle}>
-				<h1>＃探す</h1>
-				<h3>Java</h3>
-				<h3>PHP</h3>
-				<h3>JavaScript</h3>
-				<h3>Python</h3>
-				<h3>C++</h3>
-				<h3>C#</h3>
-				<h3>unity</h3>
-				<h3>COBOL</h3>
-				<h3>Swift</h3>
+				<FormSideBar tags={tags} set_tags={set_tags} />
 			</div>
-			<form className={classes.container} onSubmit={handle_submit}>
+			<form className={classes.container} onSubmit={handleSubmit(onSubmit)}>
 				<div className={classes.div}> </div>
 				{star === 1 ? (
 					<p style={{ color: "#e65c00", textAlign: "center" }}>
@@ -90,14 +117,24 @@ const Form = () => {
 					""
 				)}
 				<label>
-					<input type="text" name="name" className={classes.input} />
+					<input
+						type="text"
+						name="title"
+						className={classes.input}
+						ref={register({ required: true })}
+					/>
 				</label>
 				{star === 0 ? <input type="submit" value="Send" /> : ""}
 				{/* <input type="submit" value="Send" /> */}
-				<div className={classes.div}> </div>
+				<div className={classes.div}>
+					{tags &&
+						tags.map((tag) => {
+							return `${tag} / `;
+						})}
+				</div>
 
 				<div className={classes.div}> </div>
-				<select>
+				<select name="working" ref={register({ required: true })}>
 					<option value="0.5">0.5</option>
 					<option value="1.0">1.0</option>
 					<option value="1.5">1.5</option>
@@ -118,13 +155,14 @@ const Form = () => {
 					<option value="9.0">9.0</option>
 					<option value="10">9+</option>
 				</select>
-				<input className={classes.input}></input>
 				<TextField
 					id="outlined-multiline-static"
+					name="text"
 					className={classes.text}
 					multiline
 					rows={6}
 					variant="outlined"
+					ref={register({ required: true })}
 				/>
 				<div className={classes.div}> </div>
 			</form>
