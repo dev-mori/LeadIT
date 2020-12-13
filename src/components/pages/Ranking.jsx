@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import firebase from "../../firebase/firebase";
 import Header from "../templates/Header/Header";
+import RankIcon from "../templates/icons/user/RankIcon";
+import RankProfile from "../templates/icons/components/RankProfile";
 
 const Ranking = () => {
   const db = firebase.firestore().collection("dots");
@@ -25,7 +27,6 @@ const Ranking = () => {
   };
 
   const hoge = [];
-  let item = [];
   useEffect(() => {
     db.where(
       "createdAt",
@@ -44,6 +45,7 @@ const Ranking = () => {
             element.working += current.working;
           } else {
             result.push({
+              userName: current.userName,
               userId: current.userId,
               working: current.working,
             });
@@ -55,11 +57,11 @@ const Ranking = () => {
           if (a.working > b.working) return -1;
           return 0;
         });
-        const one = group[0].userId;
+        const one = group[0].userName;
         setOne(one);
         const oneHours = group[0].working;
         setOneHours(oneHours);
-        const two = group[1].userId;
+        const two = group[1].userName;
         setTwo(two);
         const twoHours = group[1].working;
         setTwoHours(twoHours);
@@ -74,8 +76,10 @@ const Ranking = () => {
   return (
     <div style={{ textAlign: "center" }}>
       {/* <Header /> */}
-      <h1>Ranking 👑</h1>
-      <p>
+      <h1 style={{ marginTop: "50px" }}>Ranking 👑</h1>
+      <p style={{ marginTop: "100px", fontSize: "30px" }}>
+        {/* <RankIcon one={one} /> */}
+        <RankProfile />
         🥇1st:{one} {oneHours}
         <br />
         🥈2st:{two} {twoHours}
