@@ -64,7 +64,7 @@ const Ranking = () => {
         setTwoRank(twoRank);
         const twoHours = group[1].working;
         setTwoHours(twoHours);
-        const threeRank = group[2].userId;
+        const threeRank = group[2].userName;
         setThreeRank(threeRank);
         const threeHours = group[2].working;
         setThreeHours(threeHours);
