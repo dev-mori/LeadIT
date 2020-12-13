@@ -37,49 +37,54 @@ export default function MiniForm() {
   const star = useSelector((state) => state.star);
   const user = useContext(AuthContext);
 
-  const onSubmit = (data) => {
-    const dotId = shortid.generate();
-    if (star === 0) {
-      firebase.firestore().collection("dots").doc(dotId).set({
-        dotId: dotId,
-        title: data.title,
-        text: "",
-        url: "",
-        working: data.working,
-        tag: "",
-        userId: user.uid,
-        createdAt: new Date(),
-        getday: new Date().getDay(),
-        userName: user.displayName,
-      });
-      dispatch(
-        add_dot({
-          dotId: dotId,
-          title: data.title,
-          text: "",
-          url: "",
-          working: data.working,
-          tag: "",
-          userId: user.uid,
-          createdAt: new Date(),
-        })
-      );
-      dispatch(set_star());
-    }
-  };
+	const onSubmit = (data) => {
+		const dotId = shortid.generate();
+		if (star === 0) {
+			firebase
+				.firestore()
+				.collection("dots")
+				.doc(dotId)
+				.set({
+					dotId: dotId,
+					title: data.title,
+					text: "",
+					url: "",
+					working: Number(data.working),
+					tags: [],
+					userId: user.uid,
+					userName: user.displayName,
+					createdAt: new Date(),
+					getday: new Date().getDay(),
+				});
+			dispatch(
+				add_dot({
+					dotId: dotId,
+					title: data.title,
+					text: "",
+					url: "",
+					working: Number(data.working),
+					tags: [],
+					userId: user.uid,
+					userName: user.displayName,
+					createdAt: new Date(),
+				})
+			);
+			dispatch(set_star());
+		}
+	};
 
-  const set_send = () => {
-    if (star === 0) {
-      return <input type="submit" value="Send" />;
-    }
-  };
+	const setSendButton = () => {
+		if (star === 0) {
+			return <input type="submit" value="Send" />;
+		}
+	};
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Title</label>
-      <input name="title" ref={register({ required: true })} />
-      <Select label="working" ref={register({ required: true })} />
-      {set_send()}
-    </form>
-  );
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<label>Title</label>
+			<input name="title" ref={register({ required: true })} />
+			<Select label="working" ref={register({ required: true })} />
+			{setSendButton()}
+		</form>
+	);
 }

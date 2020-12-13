@@ -8,7 +8,7 @@ export const DotReducer = (state = initialState, action) => {
 		case Actions.ADD_DOT:
 			return [...state, action.payload];
 		case Actions.DELETE_DOT:
-			return state.filter((dot) => dot !== action.payload);
+			return state.filter((dot) => dot.dotId !== action.payload);
 
 		default:
 			return state;

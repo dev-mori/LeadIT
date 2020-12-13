@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Footer from "../templates/Footer/Footer";
 import Header from "../templates/Header/Header";
 import BarChart from "../templates/graph/BarChart";
@@ -53,13 +54,15 @@ export default function Base() {
         <MiniForm />
         <MiniDots />
       </Bodyleft>
-      {/* <Ranking /> */}
       {/* <UserIcon /> */}
       <Footer />
       <div>Index</div>
       <button style={{ width: "100px", height: "30px" }} onClick={logout}>
         ログアウト
       </button>
+      <Link to="/form">
+        <button>Formページ</button>
+      </Link>
     </React.Fragment>
   );
 }
