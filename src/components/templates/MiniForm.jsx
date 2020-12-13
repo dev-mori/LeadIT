@@ -49,11 +49,12 @@ export default function MiniForm() {
         text: "",
         url: "",
         working: data.working,
-        tags: "",
+        tags: [],
         userId: user.uid,
         createdAt: new Date(),
         getday: new Date().getDay(),
       });
+      console.log(typeof Number(data.working));
       dispatch(
         add_dot({
           dotId: dotId,
@@ -61,7 +62,7 @@ export default function MiniForm() {
           text: "",
           url: "",
           working: data.working,
-          tags: "",
+          tags: [],
           userId: user.uid,
           createdAt: new Date(),
         })
@@ -70,11 +71,11 @@ export default function MiniForm() {
     }
   };
 
-	const setSendButton = () => {
-		if (star === 0) {
-			return <input type="submit" value="Send" />;
-		}
-	};
+  const setSendButton = () => {
+    if (star === 0) {
+      return <input type="submit" value="Send" />;
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

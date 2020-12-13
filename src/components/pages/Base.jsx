@@ -63,6 +63,12 @@ export default function Base() {
       <Link to="/form">
         <button>Formページ</button>
       </Link>
+      <Link to="/ourdots">
+        <button>OurDotsページ</button>
+      </Link>
+      <Link to="/mydots">
+        <button>MyDotsページ</button>
+      </Link>
     </React.Fragment>
   );
 }
