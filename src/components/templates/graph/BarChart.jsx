@@ -119,6 +119,7 @@ const BarChart = () => {
                 {
                   ticks: {
                     beginAtZero: true,
+                    max: 8,
                   },
                 },
               ],

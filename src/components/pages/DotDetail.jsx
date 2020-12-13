@@ -39,10 +39,12 @@ const TEXT = styled.div`
   height: 65%;
   padding-bottom: 10%;
 `;
+
 const TAGS = styled.div`
   font-size: 1.2rem;
   height: 50px;
 `;
+
 const IMG_WRAPPER = styled.div`
   width: 100%;
   // padding-bottom: 10%;
@@ -103,7 +105,7 @@ export default function DotDetail() {
   // -----------------------
 
   const onEdit_click = () => {
-    console.log("edit click");
+    history.push(`/dot/${dot.dotId}/edit`);
   };
 
   const onDelete_click = () => {

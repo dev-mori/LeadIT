@@ -27,9 +27,6 @@ const Select = React.forwardRef(({ label }, ref) => (
       <option value="7.0">7.0</option>
       <option value="7.5">7.5</option>
       <option value="8.0">8.0</option>
-      <option value="8.5">8.5</option>
-      <option value="9.0">9.0</option>
-      <option value="10">9+</option>
     </select>
   </>
 ));
@@ -43,27 +40,32 @@ export default function MiniForm() {
   const onSubmit = (data) => {
     const dotId = shortid.generate();
     if (star === 0) {
-      firebase.firestore().collection("dots").doc(dotId).set({
-        dotId: dotId,
-        title: data.title,
-        text: "",
-        url: "",
-        working: data.working,
-        tags: [],
-        userId: user.uid,
-        createdAt: new Date(),
-        getday: new Date().getDay(),
-      });
-      console.log(typeof Number(data.working));
+      firebase
+        .firestore()
+        .collection("dots")
+        .doc(dotId)
+        .set({
+          dotId: dotId,
+          title: data.title,
+          text: "",
+          url: "",
+          working: Number(data.working),
+          tags: [],
+          userId: user.uid,
+          userName: user.displayName,
+          createdAt: new Date(),
+          getday: new Date().getDay(),
+        });
       dispatch(
         add_dot({
           dotId: dotId,
           title: data.title,
           text: "",
           url: "",
-          working: data.working,
+          working: Number(data.working),
           tags: [],
           userId: user.uid,
+          userName: user.displayName,
           createdAt: new Date(),
         })
       );

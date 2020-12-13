@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Avatar from "react-avatar-edit";
 import firebase from "firebase";
+import { AuthContext } from "../../../../firebase/AuthService";
 
 const CreateAvatar = ({ getData }) => {
   const [preview, setPreview] = useState("");
   const currentUser = firebase.auth().currentUser;
   const db = firebase.firestore().collection("userIcon");
+  const user = useContext(AuthContext);
 
   const set_userIcon = (preview) => {
     // blobに変換
@@ -13,10 +15,10 @@ const CreateAvatar = ({ getData }) => {
     // firestoreに保存
     db.doc(currentUser.uid)
       .set({
-        userName: currentUser.displayName,
+        userName: user.displayName,
         img: blob,
         time: new Date(),
-        // blobId: shortid.generate(),
+        userId: user.uid,
       })
       .catch((error) => console.log(error));
   };

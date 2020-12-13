@@ -33,19 +33,19 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function OurSideBar({ sortDots, set_sortDots }) {
+export default function OurSideBar({ dots, sortDots, set_sortDots }) {
   const classes = useStyles();
   const sort_dots = (tag) => {
     set_sortDots(
       sortDots.filter((dot) => {
-        return dot.tags.includes(tag);
+        if (dot.tags.indexOf(tag) !== -1) return dot;
       })
     );
   };
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
-        <ListItem button>
+        <ListItem button onClick={() => set_sortDots(dots)}>
           <ListItemIcon>
             <FontAwesomeIcon icon={faGlobe} />
           </ListItemIcon>
