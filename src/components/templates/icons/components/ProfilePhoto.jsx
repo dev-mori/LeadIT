@@ -5,25 +5,26 @@ import firebase from "firebase";
 
 const ProfilePhoto = ({ getData, imageSrc }) => {
   const [toggle, setToggle] = useState(false);
-  const [imageurl, setImageUrl] = useState("");
   const [blobKey, setBlobKey] = useState("");
   const db = firebase.firestore().collection("userIcon");
   const currentUser = firebase.auth().currentUser;
 
   useEffect(() => {
-    db.limit(1).onSnapshot((snapshot) => {
-      snapshot.docs.map((doc) => {
-        const item = doc.data();
-        const blob = item.img;
-        const getBlobId = item.blobId;
-        setBlobKey(getBlobId);
-        if (!imageSrc && !toggle) {
-          imageSrc = blob;
-          setToggle(true);
-          getData(true, imageSrc);
-        }
+    db.where("userId", "==", currentUser.uid)
+      .limit(1)
+      .onSnapshot((snapshot) => {
+        snapshot.docs.map((doc) => {
+          const item = doc.data();
+          const blob = item.img;
+          const getBlobId = item.blobId;
+          setBlobKey(getBlobId);
+          if (!imageSrc && !toggle) {
+            imageSrc = blob;
+            setToggle(true);
+            getData(true, imageSrc);
+          }
+        });
       });
-    });
   }, []);
 
   const handleToggleClick = () => {
