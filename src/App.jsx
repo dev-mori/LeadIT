@@ -16,43 +16,41 @@ import firebase from "./firebase/firebase";
 import { AuthProvider } from "./firebase/AuthService";
 import { AuthContext } from "./firebase/AuthService";
 import LoggedInRoute from "./firebase/LoggedInRoute";
-
-
+import Edit from "./components/pages/Edit";
 
 export default function App() {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("dots")
+      .get()
+      .then((data) => {
+        const RESPONSE = data.docs.map((doc) => {
+          return doc.data();
+        });
+        dispatch(fetch_dots(RESPONSE));
+      });
+  }, []);
 
-	useEffect(() => {
-		firebase
-			.firestore()
-			.collection("dots")
-			.get()
-			.then((data) => {
-				const RESPONSE = data.docs.map((doc) => {
-					return doc.data();
-				});
-				dispatch(fetch_dots(RESPONSE));
-			});
-	}, []);
-
-	return (
-		<AuthProvider>
-			<Router>
-				<Switch>
-					<LoggedInRoute exact path="/" component={Base} />
-					<Route exact path="/home" component={Home} />
-					<Route exact path="/about" component={About} />
-					<Route exact path="/signin" component={SignIn} />
-					<Route exact path="/signup" component={SignUp} />
-					<Route exact path="/mydots" component={MyDots} />
-					<Route exact path="/form" component={Form} />
-					<Route exact path="/dot/:id" component={DotDetail} />
-					<Route exact path="/mydots" component={MyDots} />
-					<Route exact path="/ourdots" component={OurDots} />
-					
-				</Switch>
-			</Router>
-		</AuthProvider>
-	);
+  return (
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <LoggedInRoute exact path="/" component={Base} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/mydots" component={MyDots} />
+          <Route exact path="/form" component={Form} />
+          <Route exact path="/dot/:id" component={DotDetail} />
+          <Route exact path="/dot/:id/edit" component={Edit} />
+          <Route exact path="/mydots" component={MyDots} />
+          <Route exact path="/ourdots" component={OurDots} />
+        </Switch>
+      </Router>
+    </AuthProvider>
+  );
 }
