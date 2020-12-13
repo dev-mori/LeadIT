@@ -27,9 +27,6 @@ const Select = React.forwardRef(({ label }, ref) => (
       <option value="7.0">7.0</option>
       <option value="7.5">7.5</option>
       <option value="8.0">8.0</option>
-      <option value="8.5">8.5</option>
-      <option value="9.0">9.0</option>
-      <option value="10">9+</option>
     </select>
   </>
 ));

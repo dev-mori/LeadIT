@@ -33,7 +33,7 @@ const RankProfile = ({ oneRank, twoRank, threeRank }) => {
         }
       });
     });
-  }, [twoRank]);
+  }, [oneRank, twoRank, threeRank]);
 
   return (
     <div className="container">

@@ -80,11 +80,11 @@ const Ranking = () => {
         <RankProfile oneRank={oneRank} />
         <RankProfile twoRank={twoRank} />
         <RankProfile threeRank={threeRank} />
-        🥇1st:{oneRank} {oneHours}
+        🥇1st: {oneRank}さん {oneHours}hours
         <br />
-        🥈2st:{twoRank} {twoHours}
+        🥈2st: {twoRank}さん {twoHours}hours
         <br />
-        🥉3st:{threeRank} {threeHours}
+        🥉3st: {threeRank}さん {threeHours}hours
       </p>
     </div>
   );
