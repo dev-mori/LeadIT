@@ -49,7 +49,7 @@ export default function MiniForm() {
         text: "",
         url: "",
         working: data.working,
-        tag: "",
+        tags: "",
         userId: user.uid,
         createdAt: new Date(),
         getday: new Date().getDay(),
@@ -70,18 +70,18 @@ export default function MiniForm() {
     }
   };
 
-  const set_send = () => {
-    if (star === 0) {
-      return <input type="submit" value="Send" />;
-    }
-  };
+	const setSendButton = () => {
+		if (star === 0) {
+			return <input type="submit" value="Send" />;
+		}
+	};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Title</label>
       <input name="title" ref={register({ required: true })} />
       <Select label="working" ref={register({ required: true })} />
-      {set_send()}
+      {setSendButton()}
     </form>
   );
 }

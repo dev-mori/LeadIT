@@ -7,7 +7,9 @@ const Header = () => {
 	return (
 		<>
 			<Nav>
-				<h1>LeadIT</h1>
+				<NavLink to="/"  >
+					<h1>LeadIT</h1>
+				</NavLink>
 				<NavLink to="/services" activeStyle>
 					Services
 				</NavLink>

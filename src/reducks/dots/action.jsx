@@ -18,6 +18,6 @@ export const DELETE_DOT = "DELETE_DOT";
 export const delete_dot = (dot) => {
 	return {
 		type: DELETE_DOT,
-		payload: dot,
+		payload: dot.dotId,
 	};
 };
