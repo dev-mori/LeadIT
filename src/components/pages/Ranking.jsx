@@ -74,7 +74,7 @@ const Ranking = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      {/* <Header /> */}
+      <Header />
       <h1 style={{ marginTop: "50px" }}>Ranking 👑</h1>
       <p style={{ marginTop: "100px", fontSize: "30px" }}>
         <RankProfile oneRank={oneRank} />
