@@ -17,6 +17,7 @@ import { AuthProvider } from "./firebase/AuthService";
 import { AuthContext } from "./firebase/AuthService";
 import LoggedInRoute from "./firebase/LoggedInRoute";
 import Edit from "./components/pages/Edit";
+import Ranking from "./components/pages/Ranking";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export default function App() {
           <Route exact path="/dot/:id/edit" component={Edit} />
           <Route exact path="/mydots" component={MyDots} />
           <Route exact path="/ourdots" component={OurDots} />
+          <Route exact path="/ranking" component={Ranking} />
         </Switch>
       </Router>
     </AuthProvider>

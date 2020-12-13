@@ -14,23 +14,23 @@ import { add_dot } from "../../reducks/dots/action";
 import { set_star } from "../../reducks/star/action";
 
 const useStyles = makeStyles({
-	container: {
-		width: "400px",
-		margin: "0 auto",
-	},
-	input: {
-		width: "343px",
-	},
-	div: {
-		height: "40px",
-	},
-	text: {
-		width: "400px",
-	},
+  container: {
+    width: "400px",
+    margin: "0 auto",
+  },
+  input: {
+    width: "343px",
+  },
+  div: {
+    height: "40px",
+  },
+  text: {
+    width: "400px",
+  },
 });
 
 const bodyStyle = {
-	float: "left",
+  float: "left",
 };
 
 const Form = () => {
@@ -41,29 +41,29 @@ const Form = () => {
 	const star = useSelector((state) => state.star);
 	const [tags, set_tags] = useState([]);
 
-	// ----今日のdot作ってるか確認------//
-	const get_todayMidnight = () => {
-		const TODAY_MIDNIGHT = new Date();
-		TODAY_MIDNIGHT.setHours(0);
-		TODAY_MIDNIGHT.setMinutes(0);
-		return TODAY_MIDNIGHT.setSeconds(0);
-	};
+  // ----今日のdot作ってるか確認------//
+  const get_todayMidnight = () => {
+    const TODAY_MIDNIGHT = new Date();
+    TODAY_MIDNIGHT.setHours(0);
+    TODAY_MIDNIGHT.setMinutes(0);
+    return TODAY_MIDNIGHT.setSeconds(0);
+  };
 
-	if (user) {
-		firebase
-			.firestore()
-			.collection("dots")
-			.where("userId", "==", user.uid)
-			.where("createdAt", ">=", new Date(get_todayMidnight()))
-			.get()
-			.then((data) => {
-				const todayDot = data.docs.map((doc) => {
-					return doc.data();
-				});
-				dispatch(fetch_todayDotLength(todayDot.length));
-			});
-	}
-	// -----------------------
+  if (user) {
+    firebase
+      .firestore()
+      .collection("dots")
+      .where("userId", "==", user.uid)
+      .where("createdAt", ">=", new Date(get_todayMidnight()))
+      .get()
+      .then((data) => {
+        const todayDot = data.docs.map((doc) => {
+          return doc.data();
+        });
+        dispatch(fetch_todayDotLength(todayDot.length));
+      });
+  }
+  // -----------------------
 
 	const onSubmit = (data) => {
 		const dotId = shortid.generate();
