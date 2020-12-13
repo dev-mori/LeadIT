@@ -40,6 +40,11 @@ const TEXT = styled.div`
   padding-bottom: 10%;
 `;
 
+const TAGS = styled.div`
+  font-size: 1.2rem;
+  height: 50px;
+`;
+
 const IMG_WRAPPER = styled.div`
   width: 100%;
   // padding-bottom: 10%;
@@ -199,6 +204,13 @@ export default function DotDetail() {
             今日はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
             勉強時間は?時間だった。 今日の勉強で？？？の記事(URL)が役に立った。
           </TEXT>
+          <TAGS>
+            Tags :
+            {dot &&
+              dot.tags.map((tag) => {
+                return `${tag} / `;
+              })}
+          </TAGS>
           <IMG_WRAPPER style={{ paddingBottom: "10%" }}>
             <IMG
               src={calendarImg}
