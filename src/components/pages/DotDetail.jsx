@@ -147,6 +147,5 @@ export default function DotDetail() {
 				</INNER>
       <Footer />
 			</div>
-
 	);
 }
