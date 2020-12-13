@@ -16,6 +16,7 @@ import firebase from "./firebase/firebase";
 import { AuthProvider } from "./firebase/AuthService";
 import { AuthContext } from "./firebase/AuthService";
 import LoggedInRoute from "./firebase/LoggedInRoute";
+import Edit from "./components/pages/Edit";
 import Ranking from "./components/pages/Ranking";
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
           <Route exact path="/mydots" component={MyDots} />
           <Route exact path="/form" component={Form} />
           <Route exact path="/dot/:id" component={DotDetail} />
+          <Route exact path="/dot/:id/edit" component={Edit} />
           <Route exact path="/mydots" component={MyDots} />
           <Route exact path="/ourdots" component={OurDots} />
           <Route exact path="/ranking" component={Ranking} />
