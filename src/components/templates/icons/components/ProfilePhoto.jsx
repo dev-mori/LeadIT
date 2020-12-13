@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
+import { AuthContext } from "../../../../firebase/AuthService";
 
 const ProfilePhoto = ({ getData, imageSrc }) => {
   const [toggle, setToggle] = useState(false);
   const [blobKey, setBlobKey] = useState("");
   const db = firebase.firestore().collection("userIcon");
   const currentUser = firebase.auth().currentUser;
-
+  const user = useContext(AuthContext);
   useEffect(() => {
-    db.where("userId", "==", currentUser.uid)
+    db.where("userId", "==", user.uid)
       .limit(1)
-      .onSnapshot((snapshot) => {
-        snapshot.docs.map((doc) => {
+      .get()
+      .then((data) => {
+        data.docs.map((doc) => {
           const item = doc.data();
           const blob = item.img;
           const getBlobId = item.blobId;
@@ -37,8 +39,6 @@ const ProfilePhoto = ({ getData, imageSrc }) => {
     getData(false, "");
     db.doc(currentUser.uid).delete();
   };
-
-  // console.log(imageurl);
   return (
     <div className="container">
       <button

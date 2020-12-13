@@ -14,7 +14,7 @@ const Header = () => {
           Services
         </NavLink>
         <NavBtn>
-          <NavBtnLink to="/signup">Sign Up</NavBtnLink>
+          <NavBtnLink to="/ranking">Ranking</NavBtnLink>
         </NavBtn>
         <NavBtn>
           <NavBtnLink to="/signin">Sign In</NavBtnLink>
