@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import firebase from "../../firebase/firebase";
 import Header from "../templates/Header/Header";
-import RankIcon from "../templates/icons/user/RankIcon";
 import RankProfile from "../templates/icons/components/RankProfile";
 
 const Ranking = () => {
   const db = firebase.firestore().collection("dots");
-  const [one, setOne] = useState("");
+  const [oneRank, setOneRank] = useState("");
   const [oneHours, setOneHours] = useState("");
-  const [two, setTwo] = useState("");
+  const [twoRank, setTwoRank] = useState("");
   const [twoHours, setTwoHours] = useState("");
-  const [three, setThree] = useState("");
+  const [threeRank, setThreeRank] = useState("");
   const [threeHours, setThreeHours] = useState("");
 
   const zeroAdjust = () => {
@@ -57,16 +56,16 @@ const Ranking = () => {
           if (a.working > b.working) return -1;
           return 0;
         });
-        const one = group[0].userName;
-        setOne(one);
+        const oneRank = group[0].userName;
+        setOneRank(oneRank);
         const oneHours = group[0].working;
         setOneHours(oneHours);
-        const two = group[1].userName;
-        setTwo(two);
+        const twoRank = group[1].userName;
+        setTwoRank(twoRank);
         const twoHours = group[1].working;
         setTwoHours(twoHours);
-        const three = group[2].userId;
-        setThree(three);
+        const threeRank = group[2].userId;
+        setThreeRank(threeRank);
         const threeHours = group[2].working;
         setThreeHours(threeHours);
         console.log(group);
@@ -78,13 +77,14 @@ const Ranking = () => {
       {/* <Header /> */}
       <h1 style={{ marginTop: "50px" }}>Ranking 👑</h1>
       <p style={{ marginTop: "100px", fontSize: "30px" }}>
-        {/* <RankIcon one={one} /> */}
-        <RankProfile />
-        🥇1st:{one} {oneHours}
+        <RankProfile oneRank={oneRank} />
+        <RankProfile twoRank={twoRank} />
+        <RankProfile threeRank={threeRank} />
+        🥇1st:{oneRank} {oneHours}
         <br />
-        🥈2st:{two} {twoHours}
+        🥈2st:{twoRank} {twoHours}
         <br />
-        🥉3st:{three} {threeHours}
+        🥉3st:{threeRank} {threeHours}
       </p>
     </div>
   );

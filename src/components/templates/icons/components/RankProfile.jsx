@@ -4,25 +4,36 @@ import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import { AuthContext } from "../../../../firebase/AuthService";
 
-const RankProfile = () => {
+const RankProfile = ({ oneRank, twoRank, threeRank }) => {
   const [imageSrc, setImageSrc] = useState("");
-
   const db = firebase.firestore().collection("userIcon");
   const currentUser = firebase.auth().currentUser;
   const user = useContext(AuthContext);
   useEffect(() => {
-    db.limit(1)
-      .get()
-      .then((data) => {
-        data.docs.map((doc) => {
-          const item = doc.data();
+    db.get().then((data) => {
+      data.docs.map((doc) => {
+        const item = doc.data();
+        const name = item.userName;
+        const nameId = item.userId;
+        if (name === oneRank) {
           const blob = item.img;
           if (!imageSrc) {
             setImageSrc(blob);
           }
-        });
+        } else if (name === twoRank) {
+          const blob = item.img;
+          if (!imageSrc) {
+            setImageSrc(blob);
+          }
+        } else if (name === threeRank) {
+          const blob = item.img;
+          if (!imageSrc) {
+            setImageSrc(blob);
+          }
+        }
       });
-  }, []);
+    });
+  }, [twoRank]);
 
   return (
     <div className="container">
