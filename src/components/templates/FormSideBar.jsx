@@ -31,10 +31,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 export default function FormSideBar({ tags, set_tags }) {
   const classes = useStyles();
   const adjust_tags = (tag) => {

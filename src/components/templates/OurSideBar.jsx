@@ -29,10 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 export default function OurSideBar({ dots, sortDots, set_sortDots }) {
   const classes = useStyles();
   const sort_dots = (tag) => {
