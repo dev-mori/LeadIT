@@ -6,15 +6,10 @@ import Header from "../templates/Header/Header";
 import BarChart from "../templates/graph/BarChart";
 import MiniDots from "../templates/MiniDots";
 import MiniForm from "../templates/MiniForm";
-import Dots from "../templates/Dots";
 import { AuthContext } from "../../firebase/AuthService";
 import firebase from "../../firebase/firebase";
 import { fetch_todayDotLength } from "../../reducks/star/action";
-
-import { red } from "@material-ui/core/colors";
-// import UserIcon from "../templates/icons/user/user";
 import { Bodyleft } from "../templates/Header/HeaderElements";
-// import Ranking from "./Ranking";
 
 export default function Base() {
   const dispatch = useDispatch();
@@ -54,7 +49,6 @@ export default function Base() {
         <MiniForm />
         <MiniDots />
       </Bodyleft>
-      {/* <UserIcon /> */}
       <Footer />
       <div>Index</div>
       <button style={{ width: "100px", height: "30px" }} onClick={logout}>
