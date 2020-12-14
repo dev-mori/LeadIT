@@ -6,7 +6,7 @@ import { AuthContext } from "../../../../firebase/AuthService";
 
 const ProfilePhoto = ({ getData, imageSrc }) => {
   const [toggle, setToggle] = useState(false);
-  const [blobKey, setBlobKey] = useState("");
+  const [, setBlobKey] = useState("");
   const db = firebase.firestore().collection("userIcon");
   const currentUser = firebase.auth().currentUser;
   const user = useContext(AuthContext);

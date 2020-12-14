@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     width: "400px",
   },
 });
+
 const Form = () => {
   const classes = useStyles();
   const { register, handleSubmit } = useForm();
@@ -128,7 +129,6 @@ const Form = () => {
               return `${tag} / `;
             })}
         </div>
-
         <div className={classes.div}> </div>
         <select name="working" ref={register({ required: true })}>
           <option value="0.5">0.5</option>

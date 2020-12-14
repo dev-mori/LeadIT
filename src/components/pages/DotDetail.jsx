@@ -8,12 +8,11 @@ import { AuthContext } from "../../firebase/AuthService";
 import Header from "../templates/Header/Header";
 import Footer from "../templates/Footer/Footer";
 import styled from "styled-components";
-import Avatar from "@material-ui/core/Avatar"; //ひとまずのimport
+import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import calendarImg from "../pages/img/calendar.png";
 import clockImg from "../pages/img/alarm-clock.png";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,41 +21,31 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(7),
   },
 }));
-
 const INNER = styled.div`
   display: flex;
   width: 60%;
   margin: auto;
   padding: 6% 2%;
 `;
-
 const DETAIL_WRAPPER = styled.div`
   padding-left: 8%;
 `;
-
 const TEXT = styled.div`
   font-size: 1.2rem;
   height: 65%;
   padding-bottom: 10%;
 `;
-
 const TAGS = styled.div`
   font-size: 1.2rem;
   height: 50px;
 `;
-
 const IMG_WRAPPER = styled.div`
   width: 100%;
   // padding-bottom: 10%;
 `;
-
 const IMG = styled.img`
   width: 55px;
   padding-right: 2%;
-`;
-
-const P = styled.p`
-  font-size: 1.2rem;
 `;
 
 export default function DotDetail() {
@@ -80,7 +69,6 @@ export default function DotDetail() {
       });
   }, []);
 
-  // ----今日のdot作ってるか確認------//
   const get_todayMidnight = () => {
     const TODAY_MIDNIGHT = new Date();
     TODAY_MIDNIGHT.setHours(0);
@@ -102,21 +90,18 @@ export default function DotDetail() {
         dispatch(fetch_todayDotLength(todayDot.length));
       });
   }
-  // -----------------------
 
   const onEdit_click = () => {
     history.push(`/dot/${dot.dotId}/edit`);
   };
 
   const onDelete_click = () => {
-    console.log(dot);
     firebase
       .firestore()
       .collection("dots")
       .doc(dot.dotId)
       .delete()
       .then(function () {
-        console.log("Document successfully deleted!");
         dispatch(delete_dot(dot));
         history.push("/");
       })
@@ -154,30 +139,12 @@ export default function DotDetail() {
     }
   };
 
-  // const dot = firebase
-  //   .firestore()
-  //   .collection("dots")
-  //   .doc(id)
-  //   .get()
-  //   .then((doc) => {
-  //     console.log(doc.data().title);
-  //     return doc.data();
-  //     // set_dot(doc.data());
-  //   });
-  // console.log(dot.handleFulfilled(value));
-
-  // .then((doc) => {
-  //   return doc;
-  // });
-
   const render_workTime = () => {
     if (dot) {
       const createdAt = new Date(dot.createdAt.seconds * 1000);
       const year = createdAt.getFullYear();
       const month = createdAt.getMonth() + 1;
       const date = createdAt.getDate();
-      const hour = createdAt.getHours();
-      const minute = createdAt.getMinutes();
       return (
         year +
         "/" +
@@ -220,7 +187,6 @@ export default function DotDetail() {
             />
             {render_workTime()}
           </IMG_WRAPPER>
-
           <IMG_WRAPPER style={{ paddingBottom: "2%" }}>
             <IMG
               src={clockImg}
@@ -231,12 +197,6 @@ export default function DotDetail() {
             今週の合計勉強時間：30時間
           </IMG_WRAPPER>
           <span>{show_editAndDeleteButtons()}</span>
-
-          {/* {dot && <p>title : {dot.title}</p>}
-						{dot && <p>tag : {dot.tag}</p>}
-						{dot && <p>url : {dot.url}</p>}
-						{dot && <p>working : {dot.working}</p>}
-						{dot && <p>text : {dot.text}</p>} */}
         </DETAIL_WRAPPER>
       </INNER>
       <Footer />

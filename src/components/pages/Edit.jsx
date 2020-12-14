@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../firebase/AuthService";
 import Header from "../templates/Header/Header.jsx";
 import Footer from "../templates/Footer/Footer.jsx";
-import BarChart from "../templates/graph/BarChart";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import FormSideBar from "../templates/FormSideBar";
-import { useDispatch } from "react-redux";
 import firebase from "firebase";
 
 const useStyles = makeStyles({
@@ -34,7 +32,6 @@ const bodyStyle = {
 const Edit = () => {
   const classes = useStyles();
   const { id } = useParams();
-  const dispatch = useDispatch();
   const user = useContext(AuthContext);
   const [dot, set_dot] = useState();
   const [tags, set_tags] = useState();
@@ -53,11 +50,13 @@ const Edit = () => {
         dot && set_tags(dot.tags);
       });
   }, []);
+
   useEffect(() => {
     if (dot) {
       set_tags(dot.tags);
     }
   }, [dot]);
+
   const onSubmit = (data) => {
     firebase
       .firestore()
@@ -76,6 +75,7 @@ const Edit = () => {
         getday: new Date().getDay(),
       });
   };
+
   return (
     <React.Fragment>
       <Header />

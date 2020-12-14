@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
-
 export const Nav = styled.nav`
   background: #99ccff;
   height: 80px;
@@ -54,5 +53,5 @@ export const Icon = styled.i`
 `;
 
 export const Bodyleft = styled.div`
-  float: right
+  float: right;
 `;

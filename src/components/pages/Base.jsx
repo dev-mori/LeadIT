@@ -14,7 +14,6 @@ import { Bodyleft } from "../templates/Header/HeaderElements";
 export default function Base() {
   const dispatch = useDispatch();
   const user = useContext(AuthContext);
-
   const get_todayMidnight = () => {
     const TODAY_MIDNIGHT = new Date();
     TODAY_MIDNIGHT.setHours(0);
