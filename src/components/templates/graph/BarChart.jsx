@@ -6,6 +6,7 @@ import { AuthContext } from "../../../firebase/AuthService";
 const BarChart = () => {
   const db = firebase.firestore().collection("dots");
   const [filledWeek, set_filledWeek] = useState([]);
+  const [filledWeek2, set_filledWeek2] = useState([]);
   const user = useContext(AuthContext);
 
   const zeroAdjust = () => {
@@ -20,6 +21,19 @@ const BarChart = () => {
     let five = new Date(four);
     return five;
   };
+
+  const zeroAdjust2 = () => {
+    let agoWeek2 = zeroAdjust().setDate(zeroAdjust().getDate() - 7);
+    let hope2 = new Date(agoWeek2);
+    let zero2 = hope2.setHours(0);
+    let one2 = new Date(zero2);
+    let two2 = one2.setMinutes(0);
+    let three2 = new Date(two2);
+    let four2 = three2.setSeconds(0);
+    let five2 = new Date(four2);
+    return five2;
+  };
+  console.log(zeroAdjust2());
 
   const init_arrayWeeks = () => {
     const jsWeekAgo = [];
@@ -47,6 +61,34 @@ const BarChart = () => {
     };
     return weeksObj;
   };
+
+  const init_arrayWeeks2 = () => {
+    const jsWeekAgo2 = [];
+    let today = zeroAdjust();
+    today.setDate(today.getDate() + 1);
+    const infoWeek = [];
+    const infoDay = [];
+    const subtract = 1;
+    const max = 6;
+    for (let i = 0; i <= max; i++) {
+      today.setDate(today.getDate() - subtract);
+      infoWeek[i] = today.getMonth() + 1 + "/" + today.getDate();
+      infoDay[i] = today.getDay();
+      jsWeekAgo2.push({
+        label: infoWeek[i],
+        jsGetDay: infoDay[i],
+        initNum: 0,
+      });
+    }
+    const reversedLabelWeek = infoWeek.reverse();
+    const reversedDataWeek = jsWeekAgo2.reverse();
+    const weeksObj = {
+      weekLabel: reversedLabelWeek,
+      weekData: reversedDataWeek,
+    };
+    return weeksObj;
+  };
+  console.log(init_arrayWeeks2());
 
   useEffect(() => {
     if (user) {
@@ -77,6 +119,42 @@ const BarChart = () => {
         });
     }
   }, [user]);
+
+  const startDate = firebase.firestore.Timestamp.fromDate(zeroAdjust());
+  const endDate = firebase.firestore.Timestamp.fromDate(zeroAdjust2());
+
+  useEffect(() => {
+    if (user) {
+      db.orderBy("createdAt")
+        .where("userId", "==", user.uid)
+        // .where(
+        //   "createdAt",
+        //   ">",
+        //   firebase.firestore.Timestamp.fromDate(zeroAdjust2())
+        // )
+        .startAt(startDate)
+        .endBefore(endDate)
+        .onSnapshot((snapshot) => {
+          const hope = init_arrayWeeks2().weekData;
+          snapshot.docs.map((doc) => {
+            const item = doc.data();
+            const receivedDay = item.getday;
+            const hours = item.working;
+            for (let i = 0; i < hope.length; i++) {
+              if (receivedDay === hope[i].jsGetDay) {
+                hope[i].initNum = hours;
+              }
+            }
+          });
+          // console.log(hope);
+          const finalWeek = hope.map((el) => {
+            return el.initNum;
+          });
+          set_filledWeek2(finalWeek);
+        });
+    }
+  }, [user]);
+  console.log(filledWeek2);
 
   return (
     <div className="App">
