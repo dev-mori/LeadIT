@@ -10,24 +10,27 @@ const ProfilePhoto = ({ getData, imageSrc }) => {
   const db = firebase.firestore().collection("userIcon");
   const currentUser = firebase.auth().currentUser;
   const user = useContext(AuthContext);
+
   useEffect(() => {
-    db.where("userId", "==", user.uid)
-      .limit(1)
-      .get()
-      .then((data) => {
-        data.docs.map((doc) => {
-          const item = doc.data();
-          const blob = item.img;
-          const getBlobId = item.blobId;
-          setBlobKey(getBlobId);
-          if (!imageSrc && !toggle) {
-            imageSrc = blob;
-            setToggle(true);
-            getData(true, imageSrc);
-          }
+    if (user) {
+      db.where("userId", "==", user.uid)
+        .limit(1)
+        .get()
+        .then((data) => {
+          data.docs.map((doc) => {
+            const item = doc.data();
+            const blob = item.img;
+            const getBlobId = item.blobId;
+            setBlobKey(getBlobId);
+            if (!imageSrc && !toggle) {
+              imageSrc = blob;
+              setToggle(true);
+              getData(true, imageSrc);
+            }
+          });
         });
-      });
-  }, []);
+    }
+  }, [user]);
 
   const handleToggleClick = () => {
     setToggle(true);
