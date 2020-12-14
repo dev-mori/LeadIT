@@ -65,7 +65,7 @@ export default function DotDetail() {
         const dots = data.docs.map((doc) => {
           return doc.data();
         });
-        set_dot(dots.find((dot) => dot.dotId == id));
+        set_dot(dots.find((dot) => dot.dotId === id));
       });
   }, []);
 
