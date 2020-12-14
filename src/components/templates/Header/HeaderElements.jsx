@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
+
 export const Nav = styled.nav`
   background: #99ccff;
   height: 80px;
@@ -50,4 +51,8 @@ export const NavBtnLink = styled(Link)`
 
 export const Icon = styled.i`
   padding: 10px 22px;
+`;
+
+export const Bodyleft = styled.div`
+  float: right
 `;

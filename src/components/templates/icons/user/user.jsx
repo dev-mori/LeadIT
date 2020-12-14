@@ -4,15 +4,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import CreateAvatar from "../components/CreateAvatar";
 import Portal from "../components/Portal";
+import firebase from "firebase"
+
 
 const UserIcon = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
-
+  const [imageUrl, setImageUrl] = useState("")
+  
   const getData = (isOpened, imageSrc) => {
     setIsOpen(isOpened);
     setImageSrc(imageSrc);
   };
+
 
   return (
     <React.Fragment>

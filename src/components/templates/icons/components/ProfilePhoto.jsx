@@ -1,9 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import firebase from "firebase";
+import { AuthContext } from "../../../../firebase/AuthService";
 
 const ProfilePhoto = ({ getData, imageSrc }) => {
   const [toggle, setToggle] = useState(false);
+  const [blobKey, setBlobKey] = useState("");
+  const db = firebase.firestore().collection("userIcon");
+  const currentUser = firebase.auth().currentUser;
+  const user = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user) {
+      db.where("userId", "==", user.uid)
+        .limit(1)
+        .get()
+        .then((data) => {
+          data.docs.map((doc) => {
+            const item = doc.data();
+            const blob = item.img;
+            const getBlobId = item.blobId;
+            setBlobKey(getBlobId);
+            if (!imageSrc && !toggle) {
+              imageSrc = blob;
+              setToggle(true);
+              getData(true, imageSrc);
+            }
+          });
+        });
+    }
+  }, [user]);
 
   const handleToggleClick = () => {
     setToggle(true);
@@ -13,8 +40,8 @@ const ProfilePhoto = ({ getData, imageSrc }) => {
   const deletePic = () => {
     setToggle(false);
     getData(false, "");
+    db.doc(currentUser.uid).delete();
   };
-
   return (
     <div className="container">
       <button
